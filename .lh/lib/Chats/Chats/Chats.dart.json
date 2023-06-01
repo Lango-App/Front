@@ -1,0 +1,18 @@
+{
+    "sourceFile": "lib/Chats/Chats/Chats.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1683558407488,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1683558407488,
+            "name": "Commit-0",
+            "content": "import '../Chats/widgets/chat_item_widget.dart';\r\nimport 'package:flutter/material.dart';\r\nimport 'package:lango/Chats/Private_chat/Private_Chat.dart';\r\n\r\n// ignore_for_file: must_be_immutable\r\nclass ChatScreen extends StatelessWidget {\r\n  GlobalKey<NavigatorState> navigatorKey = GlobalKey();\r\n\r\n  TextEditingController groupController = TextEditingController();\r\n\r\n  Size size = WidgetsBinding.instance.window.physicalSize /\r\n      WidgetsBinding.instance.window.devicePixelRatio;\r\n\r\n  double getHorizontalSize(double px) {\r\n    return ((px * size.width) / 390);\r\n  }\r\n\r\n  get height {\r\n    num statusBar = MediaQueryData.fromWindow(WidgetsBinding.instance.window)\r\n        .viewPadding\r\n        .top;\r\n    num bottomBar = MediaQueryData.fromWindow(WidgetsBinding.instance.window)\r\n        .viewPadding\r\n        .bottom;\r\n    num screenHeight = size.height - statusBar - bottomBar;\r\n    return screenHeight;\r\n  }\r\n\r\n  double getVerticalSize(double px) {\r\n    return ((px * height) / 844);\r\n  }\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return SafeArea(\r\n        child: Scaffold(\r\n      body: Container(\r\n          width: getHorizontalSize(342),\r\n          margin: EdgeInsets.only(left: 24, right: 24),\r\n          decoration: BoxDecoration(\r\n              borderRadius: BorderRadius.circular(getHorizontalSize(16))),\r\n          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [\r\n            ListView.separated(\r\n                physics: NeverScrollableScrollPhysics(),\r\n                shrinkWrap: true,\r\n                separatorBuilder: (context, index) {\r\n                  return SizedBox(height: getVerticalSize(4));\r\n                },\r\n                itemCount: 9,\r\n                itemBuilder: (context, index) {\r\n                  return InkWell(\r\n                      onTap: () {\r\n                        Navigator.push(\r\n                            context,\r\n                            MaterialPageRoute(\r\n                                builder: (context) => PrivateChatScreen()));\r\n                      },\r\n                      child: ChatItemWidget());\r\n                })\r\n          ])),\r\n    ));\r\n  }\r\n}\r\n"
+        }
+    ]
+}
