@@ -7,8 +7,6 @@ import 'package:lango/Constance/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
-import 'package:flutter_countdown_timer/countdown_controller.dart';
-import 'package:lango/Register/Register.dart';
 import 'package:lango/Register/viewmodel/get_number_view_model.dart';
 
 class OtpChecking extends StatefulWidget {

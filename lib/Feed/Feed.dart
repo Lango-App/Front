@@ -260,7 +260,15 @@ class _FeedState extends State<Feed> {
       floatingActionButton: Padding(
           padding: const EdgeInsets.only(bottom: 85.0),
           child: FloatingActionButton(
-            onPressed: () => {CreatePostScreen()},
+            onPressed: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CreatePostScreen(),
+                  )
+              )
+
+            },
             backgroundColor: HexColor("FFC02D"),
             child: Icon(
               Icons.add,

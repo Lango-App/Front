@@ -107,4 +107,8 @@ class ConstanceData {
   static String avatar = "${bseImageUrl}avatar.png";
   static String r2 = "${bseImageUrl}r2.png";
   static String back = "${bseImageUrl}back.png";
+
+  static String pay_s = "${bseImageUrl}pay_s.png";
+  static String pay_f = "${bseImageUrl}pay_f.png";
 }
+
