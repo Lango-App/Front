@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:lango/Constance/Theme.dart';
+import 'package:lango/School/Course_List.dart';
 import 'package:lango/School/Practice.dart';
 import 'package:lango/School/Practice_Done.dart';
 import 'package:lango/School/Practice_Summery.dart';
 import 'package:lango/School/Question_Detail.dart';
 import 'package:lango/School/Question_List.dart';
 import 'package:lango/School/School.dart';
+import 'package:lango/School/Teacher_List.dart';
 import 'package:lango/Splash/Splash.dart';
 import 'package:lango/Splash/Onboard.dart';
 import 'package:lango/Dashboard/Dashboard.dart';
@@ -38,7 +40,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: AppTheme.getTheme(),
       debugShowCheckedModeBanner: false,
-      home: PracticeSummaryScreen(),
+      home: CourseListScreen(),
     );
   }
 }

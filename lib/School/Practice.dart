@@ -195,7 +195,7 @@ class PracticeScreenState extends State<PracticeScreen> {
                         children: [
                           Image.asset(
                             ConstanceData.avatar,
-                            height: 15,
+                            height: 12,
                           ),
                           SizedBox(
                             width: 5,

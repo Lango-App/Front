@@ -43,6 +43,13 @@ class ConstanceData {
   static String star = bseImageUrl + "Star 1 _Stroke_.png";
   static String coin = bseImageUrl + "Coin.png";
   static String backD = bseImageUrl + "back_done.png";
+  static String backArrow = bseImageUrl + "backArrow.png";
+  static String course = bseImageUrl + "subject_course.png";
+  static String subTeach = bseImageUrl + "subject_straight.png";
+  static String likeGray = bseImageUrl + "like_gray.png";
+  static String likePink = bseImageUrl + "like_pink.png";
+  static String contact = bseImageUrl + "contact.png";
+  static String coins = bseImageUrl + "Frame 34678.png";
 
   static String n26 = bseImageUrl + "n26.png";
   static String n27 = bseImageUrl + "n27.png";
