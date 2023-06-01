@@ -13,8 +13,19 @@ import 'package:lango/Register/OTP.dart';
 import 'package:lango/Register/Register.dart';
 import 'package:lango/Register/Settings.dart';
 import 'package:lango/Register/Choose_Language.dart';
+import 'package:lango/utils/shared_preferenc/perf.dart';
+import 'package:lango/utils/strorage/secure.dart';
+import 'package:lango/Chats/Private_chat/Private_Chat.dart';
+import 'package:lango/Chats/Chats/Chats.dart';
+import 'package:lango/Chats/Private_chat/models/private_chat_model.dart';
+import 'package:lango/Feed/Create_Post.dart';
+import "package:lango/Register/viewmodel/get_register_view_model.dart";
+import "package:lango/Register/viewmodel/get_number_view_model.dart";
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SimpleUserPreferences.init();
+  await SimpleUserStorage.init();
   runApp(const MyApp());
 }
 
@@ -27,7 +38,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: AppTheme.getTheme(),
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: Dashboard(),
     );
   }
 }

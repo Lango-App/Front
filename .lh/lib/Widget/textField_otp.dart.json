@@ -1,0 +1,18 @@
+{
+    "sourceFile": "lib/Widget/textField_otp.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1683699431583,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1683699431583,
+            "name": "Commit-0",
+            "content": "\n// ignore_for_file: file_names, override_on_non_overriding_member, prefer_const_constructors, deprecated_member_use\n\nimport 'package:lango/Constance/theme.dart';\nimport 'package:flutter/material.dart';\n\nclass MyTextField extends StatefulWidget {\n  final String lableText;\n  final TextStyle lableStyle;\n  final Widget suffixIcon;\n  final bool hideTextfild;\n  final VoidCallback click;\n  final TextEditingController controller;\n  final TextInputType? keyboardType;\n  MyTextField({\n    super.key,\n    required this.lableText,\n    required this.suffixIcon,\n    this.hideTextfild = false,\n    this.keyboardType,\n    this.lableStyle = const TextStyle(\n      fontFamily: 'ProductSans',\n    ),\n    required this.controller,\n    required this.click,\n  });\n\n  @override\n  State<MyTextField> createState() => _MyTextFieldState();\n}\n\nclass _MyTextFieldState extends State<MyTextField> {\n  @override\n  Widget build(BuildContext context) {\n    return TextFormField(\n      keyboardType: widget.keyboardType ?? TextInputType.text,\n      controller: widget.controller,\n      onTap: () {\n        widget.click();\n      },\n      style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 14),\n      decoration: InputDecoration(\n        labelText: widget.lableText,\n        suffixIcon: widget.suffixIcon,\n        border: InputBorder.none,\n        labelStyle: widget.lableStyle,\n\n        //labelStyle: Theme.of(context).textTheme.bodyText1!.copyWith(\n        //fontSize: 14,\n        //fontFamily: 'ProductSans',\n\n        //),\n      ),\n    );\n  }\n}\n"
+        }
+    ]
+}

@@ -1,6 +1,8 @@
+import 'package:lango/Chats/Private_chat/Private_Chat.dart';
+
 import '../Chats/widgets/chat_item_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:lango/Chats/Private_Chat.dart';
+// import 'package:lango/Chats/Private_Chat.dart';
 
 // ignore_for_file: must_be_immutable
 class ChatScreen extends StatelessWidget {

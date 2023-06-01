@@ -85,7 +85,7 @@ class ChatItemWidget extends StatelessWidget {
                   width: getHorizontalSize(
                     1,
                   ),
-                  strokeAlign: 1,
+                  // strokeAlign: StrokeAlign.,
                 ),
               ).copyWith(
                 borderRadius: BorderRadius.circular(

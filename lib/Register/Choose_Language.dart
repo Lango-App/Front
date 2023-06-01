@@ -1,7 +1,7 @@
 import 'package:lango/Constance/constance.dart';
 import 'package:lango/Constance/theme.dart';
 import 'package:lango/Dashboard/Dashboard.dart';
-import 'package:lango/Widget/textFieald_otp.dart';
+import 'package:lango/Widget/textField_otp.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +15,8 @@ class ChooselanguageScreen extends StatefulWidget {
   State<ChooselanguageScreen> createState() => ChooseLanguageState();
 }
 
-var Language = TextEditingController();
+TextEditingController l_Language = TextEditingController();
+TextEditingController n_Language = TextEditingController();
 
 class ChooseLanguageState extends State<ChooselanguageScreen> {
   @override
@@ -68,8 +69,8 @@ class ChooseLanguageState extends State<ChooselanguageScreen> {
               ),
               child: Padding(
                 padding: const EdgeInsets.all(20),
-                child: MyTextFieald(
-                  lableText: Nativelanguage.value,
+                child: MyTextField(
+                  lableText: 'Native language',
                   lableStyle: TextStyle(
                     fontFamily: 'ProductSans',
                     fontSize: 14,
@@ -87,7 +88,7 @@ class ChooseLanguageState extends State<ChooselanguageScreen> {
                           ),
                     onPressed: () {},
                   ),
-                  controller: Language,
+                  controller: n_Language,
                   click: () {
                     showModalBottomSheet<void>(
                       context: context,
@@ -118,8 +119,8 @@ class ChooseLanguageState extends State<ChooselanguageScreen> {
               ),
               child: Padding(
                 padding: const EdgeInsets.all(20),
-                child: MyTextFieald(
-                  lableText: Learnlanguage.value,
+                child: MyTextField(
+                  lableText: 'Learn language',
                   lableStyle: TextStyle(
                     fontFamily: 'ProductSans',
                     fontSize: 14,
@@ -137,7 +138,7 @@ class ChooseLanguageState extends State<ChooselanguageScreen> {
                           ),
                     onPressed: () {},
                   ),
-                  controller: Language,
+                  controller: l_Language,
                   click: () {
                     showModalBottomSheet<void>(
                       context: context,
@@ -256,6 +257,14 @@ class _ListWidgetState extends State<ListWidget> {
           padding: EdgeInsets.only(top: 130, bottom: 0),
           children: [
             Container(
+              decoration: BoxDecoration(
+                color: AppTheme.isLightTheme ? Color(0xFFF4F5F6) : Colors.black,
+                border: Border.all(color: HexColor("#EBEBF0")),
+                borderRadius: BorderRadius.only(
+                  topLeft: const Radius.circular(8.0),
+                  topRight: const Radius.circular(8.0),
+                ),
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -297,9 +306,8 @@ class _ListWidgetState extends State<ListWidget> {
                         onChanged: (value) {
                           setState(() {
                             Nativelanguage.value = value.toString();
-
+                            n_Language.text = Nativelanguage.value;
                             Navigator.of(context).pop();
-
                             //print(Nativelanguage);
                           });
                         },
@@ -326,8 +334,8 @@ class _ListWidgetState extends State<ListWidget> {
                         onChanged: (value) {
                           setState(() {
                             Nativelanguage.value = value.toString();
+                            n_Language.text = Nativelanguage.value;
                             Navigator.of(context).pop();
-
                             //print(Nativelanguage);
                           });
                         },
@@ -359,8 +367,8 @@ class _ListWidgetState extends State<ListWidget> {
                         onChanged: (value) {
                           setState(() {
                             Nativelanguage.value = value.toString();
+                            n_Language.text = Nativelanguage.value;
                             Navigator.of(context).pop();
-
                             //print(Nativelanguage);
                           });
                         },
@@ -370,14 +378,6 @@ class _ListWidgetState extends State<ListWidget> {
                     height: 30,
                   ),
                 ],
-              ),
-              decoration: BoxDecoration(
-                color: AppTheme.isLightTheme ? Color(0xFFF4F5F6) : Colors.black,
-                border: Border.all(color: HexColor("#EBEBF0")),
-                borderRadius: BorderRadius.only(
-                  topLeft: const Radius.circular(8.0),
-                  topRight: const Radius.circular(8.0),
-                ),
               ),
             ),
           ],
@@ -400,6 +400,14 @@ class _ListLearnlangoWidgetState extends State<ListLearnlangoWidget> {
           padding: EdgeInsets.only(top: 250, bottom: 0),
           children: [
             Container(
+              decoration: BoxDecoration(
+                color: AppTheme.isLightTheme ? Color(0xFFF4F5F6) : Colors.black,
+                border: Border.all(color: HexColor("#EBEBF0")),
+                borderRadius: BorderRadius.only(
+                  topLeft: const Radius.circular(8.0),
+                  topRight: const Radius.circular(8.0),
+                ),
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -441,9 +449,8 @@ class _ListLearnlangoWidgetState extends State<ListLearnlangoWidget> {
                         onChanged: (value) {
                           setState(() {
                             Learnlanguage.value = value.toString();
-
+                            l_Language.text = Learnlanguage.value;
                             Navigator.of(context).pop();
-
                             //print(Nativelanguage);
                           });
                         },
@@ -453,14 +460,6 @@ class _ListLearnlangoWidgetState extends State<ListLearnlangoWidget> {
                     height: 4,
                   ),
                 ],
-              ),
-              decoration: BoxDecoration(
-                color: AppTheme.isLightTheme ? Color(0xFFF4F5F6) : Colors.black,
-                border: Border.all(color: HexColor("#EBEBF0")),
-                borderRadius: BorderRadius.only(
-                  topLeft: const Radius.circular(8.0),
-                  topRight: const Radius.circular(8.0),
-                ),
               ),
             ),
           ],
