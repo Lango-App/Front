@@ -214,10 +214,10 @@ class PracticeScreenState extends State<PracticeScreen> {
                     ],
                   ),
                   Spacer(), 
-                  Image.asset(
-                    img,
-                    height: 22,
-                  ),
+                  // Image.asset(
+                  //   img,
+                  //   height: 22,
+                  // ),
                 ],
               ),
               SizedBox(

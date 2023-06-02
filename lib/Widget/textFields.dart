@@ -40,12 +40,6 @@ class _MyTextFiealdState extends State<MyTextFieald> {
         suffixIcon: widget.suffixIcon,
         border: InputBorder.none,
         labelStyle: widget.lableStyle,
-
-        //labelStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
-        //fontSize: 14,
-        //fontFamily: 'ProductSans',
-
-        //),
       ),
     );
   }

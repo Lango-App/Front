@@ -201,10 +201,10 @@ class TeacherListScreenState extends State<TeacherListScreen> {
                       SizedBox(
                         height: 8,
                       ),
-                      Image.asset(
-                        img,
-                        height: 18,
-                      ),
+                      // Image.asset(
+                      //   img,
+                      //   height: 18,
+                      // ),
                     ],
                   ),
                 ],
@@ -243,3 +243,4 @@ class TeacherListScreenState extends State<TeacherListScreen> {
     );
   }
 }
+

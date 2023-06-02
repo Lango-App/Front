@@ -1041,8 +1041,8 @@ class QuestionListScreenState
                     decoration: BoxDecoration(
                       color: Theme.of(context).cardColor,
                       borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(15),
-                        bottomRight: Radius.circular(15),
+                        bottomLeft: Radius.circular(5),
+                        bottomRight: Radius.circular(5),
                         topLeft: Radius.circular(5),
                         topRight: Radius.circular(5),
                       ),
@@ -1156,7 +1156,7 @@ class QuestionListScreenState
                   ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 3,
                 ),
                 InkWell(
                   onTap: () {},
@@ -1288,3 +1288,4 @@ class QuestionListScreenState
     );
   }
 }
+

@@ -221,10 +221,10 @@ class CourseListScreenState extends State<CourseListScreen> {
                     ],
                   ),
                   Spacer(), 
-                    Image.asset(
-                      img,
-                      height: 25,
-                    ),
+                  // Image.asset(
+                  //   img,
+                  //   height: 25,
+                  // ),
                 ],
               ),
               SizedBox(

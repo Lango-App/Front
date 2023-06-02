@@ -612,8 +612,9 @@ class _CoinPackageScreenState extends State<CoinPackageScreen> {
                                                 ? Border.all(
                                                     color: Color(0xFF298FC2),
                                                     width: 2,
-                                                  )
+                                                )
                                                 : null,
+                                                
                                           ),
                                           height: getVerticalSize(100),
                                           width: getHorizontalSize(100),
