@@ -289,7 +289,7 @@ class _FeedState extends State<Feed> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => CreatePostScreen(),
+                    builder: (context) => NewPostScreen(),
                   )
               )
 
