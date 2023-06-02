@@ -3,21 +3,20 @@
 import 'package:lango/Constance/theme.dart';
 import 'package:flutter/material.dart';
 
-class MyTextFieald extends StatefulWidget {
+class MyTextField extends StatefulWidget {
   final String lableText;
   final TextStyle lableStyle;
   final Widget suffixIcon;
-  final TextInputType keyboardtype;
   final bool hideTextfild;
   final VoidCallback click;
   final TextEditingController controller;
-
-  MyTextFieald({
+  final TextInputType? keyboardType;
+  MyTextField({
     super.key,
     required this.lableText,
     required this.suffixIcon,
-    this.keyboardtype = TextInputType.text,
     this.hideTextfild = false,
+    this.keyboardType,
     this.lableStyle = const TextStyle(
       fontFamily: 'ProductSans',
     ),
@@ -26,13 +25,15 @@ class MyTextFieald extends StatefulWidget {
   });
 
   @override
-  State<MyTextFieald> createState() => _MyTextFiealdState();
+  State<MyTextField> createState() => _MyTextFieldState();
 }
 
-class _MyTextFiealdState extends State<MyTextFieald> {
+class _MyTextFieldState extends State<MyTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: widget.keyboardType ?? TextInputType.text,
+      controller: widget.controller,
       onTap: () {
         widget.click();
       },

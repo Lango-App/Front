@@ -1,365 +1,403 @@
 import 'package:flutter/material.dart';
-//import 'package:lango/core/app_export.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lango/Chats/Private_chat/Private_Chat.dart';
-import 'package:lango/Profile/profile_dashboard.dart';
+import 'package:lango/Constance/Theme.dart';
+import 'package:lango/Constance/Constance.dart';
+import 'package:lango/Profile/Profile_Saved.dart';
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+import 'Profile_Comment.dart';
+import 'Profile_Post.dart';
+
+
+class Profile extends StatefulWidget {
+  Profile({Key? key}) : super(key: key);
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<Profile> createState() => _ProfileState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
-  Size size = WidgetsBinding.instance.window.physicalSize /
-      WidgetsBinding.instance.window.devicePixelRatio;
-
-  double getHorizontalSize(double px) {
-    return ((px * size.width) / 390);
-  }
-
-  get height {
-    num statusBar = MediaQueryData.fromWindow(WidgetsBinding.instance.window)
-        .viewPadding
-        .top;
-    num bottomBar = MediaQueryData.fromWindow(WidgetsBinding.instance.window)
-        .viewPadding
-        .bottom;
-    num screenHeight = size.height - statusBar - bottomBar;
-    return screenHeight;
-  }
-
-  double getVerticalSize(double px) {
-    return ((px * height) / 844);
-  }
-
-  double getSize(double px) {
-    var height = getVerticalSize(px);
-    var width = getHorizontalSize(px);
-    if (height < width) {
-      return height.toInt().toDouble();
-    } else {
-      return width.toInt().toDouble();
-    }
-  }
-
+class _ProfileState extends State<Profile> {
+  int index = 0;
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        backgroundColor: Color(0xFFffffff),
-        appBar: AppBar(
-          title: const Text(
-            "Detail",
-            style: TextStyle(
-              color: Colors.black,
-              fontFamily: "Product Sans",
-              fontSize: 20,
-            ),
-          ),
-          elevation: 0,
-          toolbarHeight: getVerticalSize(105),
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.transparent,
-          flexibleSpace: Container(
-            height: getVerticalSize(
-              104,
-            ),
-            width: double.maxFinite,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment(
-                  0.8,
-                  1,
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.only(
+            left: 18,
+            right: 18,
+            top: MediaQuery.of(context).padding.top + 16,
+            bottom: MediaQuery.of(context).padding.bottom),
+        child: Column(
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  AppTheme.isLightTheme ? ConstanceData.par : ConstanceData.par,
+                  height: 11.5,
+                  width: 6.5,
                 ),
-                end: Alignment(
-                  0.8,
-                  0,
-                ),
-                colors: [
-                  Color(0xff00ffffff),
-                  Color(0xffb2ffffff),
-                  Color(0xfffffff),
-                ],
-              ),
-            ),
-          ),
-          leadingWidth: 72,
-          //leading: leading,
+                Spacer(),
+                Text(
+                  "Detail",
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
 
-          titleSpacing: 0,
-          centerTitle: true,
-          actions: [
-            Container(
-              margin: EdgeInsets.only(
-                left: getHorizontalSize(24),
-                top: getVerticalSize(22),
-                right: getHorizontalSize(24),
-                bottom: getVerticalSize(24),
-              ),
-              child: IconButton(
-                onPressed: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => SettingsScreen(),
-                  //   ),
-                  // );
-                },
-                icon: SvgPicture.asset('assets/images/img_settings.svg'),
-              ),
-            )
-          ],
-        ),
-        body: Container(
-          width: double.maxFinite,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(getHorizontalSize(62)),
-                child: Image.asset(
-                  'assets/images/img_rectangle5658_124x124.png',
-                  height: getSize(124),
-                  width: getSize(124),
                 ),
-              ),
-              Padding(
-                  padding: EdgeInsets.only(top: getHorizontalSize(20)),
-                  child: Text(
-                    "User 01",
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: getSize(32),
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w500,
-                    ),
-                  )),
-              Text(
-                "Student",
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: const Color(0xFFa3abb2),
-                  fontSize: getSize(14),
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
+
+                Spacer(),
+                Image.asset(
+                  AppTheme.isLightTheme
+                      ? ConstanceData.pset
+                      : ConstanceData.pset,
+                  height: 25.16,
+                  width: 25.16,
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: getHorizontalSize(40),
-                  top: getVerticalSize(36),
-                  right: getHorizontalSize(27),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Column(
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                        bottom: getVerticalSize(1),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                    Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            "7",
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: const Color(0xFFc3c7ca),
-                              fontSize: getSize(16),
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w500,
-                            ),
+                          Column(
+                            children: [
+                              Image.asset(
+                                AppTheme.isLightTheme ? ConstanceData.pav : ConstanceData.pav,
+                                height: 124,
+                                width: 124,
+                              ),
+                              SizedBox(height: 41),
+                              Text(
+                                "User01",
+                                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "student",
+                                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                  color: Color.fromRGBO(163, 171, 178, 100),
+                                ),
+
+                              ),
+                            ],
                           ),
-                          Text(
-                            "post",
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: const Color(0xFFa3abb2),
-                              fontSize: getSize(14),
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w500,
-                            ),
-                          )
-                        ],
-                      ),
+                        ]
                     ),
-                    const Spacer(flex: 53),
-                    Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "150",
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: const Color(0xFFc3c7ca),
-                              fontSize: getSize(16),
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          Text(
-                            "following",
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: const Color(0xFFa3abb2),
-                              fontSize: getSize(14),
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w500,
-                            ),
-                          )
-                        ]),
-                    const Spacer(flex: 46),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        bottom: getVerticalSize(1),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "250",
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: const Color(0xFFc3c7ca),
-                              fontSize: getSize(16),
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          Text(
-                            "follower",
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: const Color(0xFFa3abb2),
-                              fontSize: getSize(14),
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w500,
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: getHorizontalSize(30),
-                  top: getVerticalSize(30),
-                  right: getHorizontalSize(30),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      style: TextButton.styleFrom(
-                        fixedSize: Size(
-                          getHorizontalSize(158),
-                          getVerticalSize(50),
-                        ),
-                        padding: EdgeInsets.only(
-                          left: getHorizontalSize(10),
-                          top: getVerticalSize(10),
-                          right: getHorizontalSize(10),
-                          bottom: getVerticalSize(10),
-                        ),
-                        backgroundColor: const Color(0xFF303772ff),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                            getHorizontalSize(
-                              15.00,
-                            ),
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        "follow",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: const Color(0xFF3772ff),
-                          fontSize: getSize(18),
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w500,
-                          height: getVerticalSize(
-                            1.50,
-                          ),
-                        ),
-                      ),
+                    SizedBox(
+                        height: 59
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: getHorizontalSize(14),
-                      ),
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PrivateChatScreen(),
-                            ),
-                          );
-                        },
-                        style: TextButton.styleFrom(
-                          fixedSize: Size(
-                            getHorizontalSize(158),
-                            getVerticalSize(50),
+                    Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Column(
+                            children: [
+                              Text(
+                                "7",
+                                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.normal,
+                                  color: Color.fromRGBO(166, 166, 166, 100),
+                                ),
+
+                              ),
+                              Text(
+                                "Post",
+                                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                  color: Color.fromRGBO(166, 166, 166, 100),
+                                ),
+
+                              ),
+                            ],
+
                           ),
-                          padding: EdgeInsets.only(
-                            left: getHorizontalSize(10),
-                            top: getVerticalSize(10),
-                            right: getHorizontalSize(10),
-                            bottom: getVerticalSize(10),
+                          Spacer(),
+                          Column(
+                            children: [
+                              Text(
+                                "150",
+                                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.normal,
+                                  color: Color.fromRGBO(166, 166, 166, 100),
+                                ),
+
+                              ),
+                              Text(
+                                "Following",
+                                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                  color: Color.fromRGBO(166, 166, 166, 100),
+                                ),
+
+                              ),
+                            ],
+
                           ),
-                          backgroundColor: Color(0xFF99171f26),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                              getHorizontalSize(
-                                15.00,
+                          Spacer(),
+                          Column(
+                            children: [
+                              Text(
+                                "250",
+                                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.normal,
+                                  color: Color.fromRGBO(166, 166, 166, 100),
+                                ),
+
+                              ),
+                              Text(
+                                "Follower",
+                                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                  color: Color.fromRGBO(166, 166, 166, 100),
+                                ),
+
+                              ),
+                            ],
+
+                          )
+                        ]
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Image.asset(
+                            AppTheme.isLightTheme ? ConstanceData.pfl : ConstanceData.pfl,
+                            height: 44,
+                            width: 158,
+                          ),
+                          Spacer(),
+                          Image.asset(
+                            AppTheme.isLightTheme ? ConstanceData.pms : ConstanceData.pms,
+                            height: 44,
+                            width: 158,
+                          )
+                        ]
+                    ),
+                    SizedBox(height: 50,),
+                    Container(
+                      padding:
+                      EdgeInsets.only(left: 20, right: 20, bottom: 85, top:5),
+                      child: Row(
+                        children: [
+                          Flexible(
+                            child: Container(
+                              height: 50 + MediaQuery.of(context).padding.bottom,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFE6E8EC),
+                                borderRadius: BorderRadius.all(Radius.circular(30)),
+                              ),
+                              child: Container(
+                                padding: EdgeInsets.only(left: 5, right: 5),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Flexible(
+                                      child: InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            index = 0;
+                                          });
+                                        },
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          width: 99,
+                                          height: 40,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                            BorderRadius.all(Radius.circular(30)),
+                                            color: index == 0
+                                                ? Colors.white
+                                                : Color(0xFFE6E8EC),
+                                          ),
+                                          child: InkWell(
+                                            onTap: () {
+                                              setState(() {
+                                                index = 0;
+                                              });
+                                            },
+                                            child: Row(
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                                children: [
+                                                  Image.asset(
+                                                    AppTheme.isLightTheme ? ConstanceData.fe : ConstanceData.fe_d,
+                                                    height: 16,
+                                                    width: 16,
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(
+                                                        left: 8,
+                                                        top: 11,
+                                                        right: 20,
+                                                        bottom: 9),
+                                                    child: Text(
+                                                      "Post",
+                                                      style: TextStyle(
+                                                        color: Color(0xff141416),
+                                                        fontSize: 12,
+                                                        fontWeight: FontWeight.w700,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ]),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Flexible(
+                                      child: InkWell(
+                                          onTap: () {
+                                            setState(() {
+                                              index = 1;
+                                            });
+                                          },
+                                          child: Container(
+                                              alignment: Alignment.center,
+                                              width: 100,
+                                              height: 40,
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(30)),
+                                                color: index == 1
+                                                    ? Colors.white
+                                                    : Color(0xFFE6E8EC),
+                                              ),
+                                              child: InkWell(
+                                                onTap: () {
+                                                  setState(() {
+                                                    index = 1;
+                                                  });
+                                                },
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                      height: 16,
+                                                      width: 16,
+                                                      child: Image.asset(
+                                                          'assets/images/img_communication.png'),
+                                                    ),
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(
+                                                        left: 8,
+                                                      ),
+                                                      child: Text(
+                                                        "Comment",
+                                                        style: TextStyle(
+                                                          color: Color(0xff141416),
+                                                          fontSize: 12,
+                                                          fontWeight: FontWeight.w700,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ))),
+                                    ),
+                                    Flexible(
+                                      child: InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            index = 2;
+                                          });
+                                        },
+                                        child: Container(
+                                          width: 100,
+                                          height: 40,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                            BorderRadius.all(Radius.circular(30)),
+                                            color: index == 2
+                                                ? Colors.white
+                                                : Color(0xFFE6E8EC),
+                                          ),
+                                          child: InkWell(
+                                            onTap: () {
+                                              setState(() {
+                                                index = 2;
+                                              });
+                                            },
+                                            child: Row(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                              children: [
+                                                Image.asset(
+                                                  AppTheme.isLightTheme ? ConstanceData.psa : ConstanceData.psa,
+                                                  height: 16,
+                                                  width: 16,
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(
+                                                    left: 8,
+                                                  ),
+                                                  child: Text(
+                                                    "Save",
+                                                    style: TextStyle(
+                                                      color: Color(0xff141416),
+                                                      fontSize: 12,
+                                                      fontFamily: "Product Sans",
+                                                      fontWeight: FontWeight.w700,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        child: Text(
-                          "massage",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: const Color(0xFFffffff),
-                            fontSize: getSize(18),
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500,
-                            height: getVerticalSize(
-                              1.50,
-                            ),
-                          ),
+                        ],
+                      ),
+                    ),
+                    Flexible(
+                      child: SingleChildScrollView(
+                        child: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: index == 0
+                              ? Profile_Post()
+                              : index == 1
+                              ? Profile_Comment()
+                              : Profile_Saved(),
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ]
               ),
-              SizedBox(
-                height: 150,
-                width: 350,
-                child: ProfileDashboard(),
-              ),
-            ],
-          ),
+            Spacer(),
+
+          ],
+
+
         ),
+
       ),
+
     );
   }
 }

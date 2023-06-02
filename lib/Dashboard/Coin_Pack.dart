@@ -555,7 +555,7 @@ class _CoinPackageScreenState extends State<CoinPackageScreen> {
                       width: 12.0,
                       height: 12.0,
                       margin:
-                          EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                      EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: (const Color(0xFF8B98B1))
@@ -595,7 +595,7 @@ class _CoinPackageScreenState extends State<CoinPackageScreen> {
                                   padding: EdgeInsets.all(8),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
+                                    MainAxisAlignment.spaceAround,
                                     children: <Widget>[
                                       GestureDetector(
                                         onTap: () {
@@ -607,12 +607,12 @@ class _CoinPackageScreenState extends State<CoinPackageScreen> {
                                           decoration: BoxDecoration(
                                             color: Colors.white,
                                             borderRadius:
-                                                BorderRadius.circular(10),
+                                            BorderRadius.circular(10),
                                             border: index == 0
                                                 ? Border.all(
-                                                    color: Color(0xFF298FC2),
-                                                    width: 2,
-                                                  )
+                                              color: Color(0xFF298FC2),
+                                              width: 2,
+                                            )
                                                 : null,
                                           ),
                                           height: getVerticalSize(100),
@@ -632,12 +632,12 @@ class _CoinPackageScreenState extends State<CoinPackageScreen> {
                                           decoration: BoxDecoration(
                                             color: Colors.white,
                                             borderRadius:
-                                                BorderRadius.circular(10),
+                                            BorderRadius.circular(10),
                                             border: index == 1
                                                 ? Border.all(
-                                                    color: Color(0xFF298FC2),
-                                                    width: 2,
-                                                  )
+                                              color: Color(0xFF298FC2),
+                                              width: 2,
+                                            )
                                                 : null,
                                           ),
                                           height: getVerticalSize(100),
@@ -658,12 +658,12 @@ class _CoinPackageScreenState extends State<CoinPackageScreen> {
                                             color: Colors.white,
                                             border: index == 2
                                                 ? Border.all(
-                                                    color: Color(0xFF298FC2),
-                                                    width: 2,
-                                                  )
+                                              color: Color(0xFF298FC2),
+                                              width: 2,
+                                            )
                                                 : null,
                                             borderRadius:
-                                                BorderRadius.circular(10),
+                                            BorderRadius.circular(10),
                                           ),
                                           height: getVerticalSize(100),
                                           width: getHorizontalSize(100),
