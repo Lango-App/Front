@@ -1,0 +1,26 @@
+{
+    "sourceFile": "lib/utils/shared_preferenc/perf.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1683667665197,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1683667712004,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -45,13 +45,13 @@\n     return _prefs?.getString('phone_number');\n   }\n \n   static String? getFirstName() {\n-    return _prefs?.getString('gender');\n+    return _prefs?.getString('first_name');\n   }\n \n   static String? getLastName() {\n-    return _prefs?.getString('gender');\n+    return _prefs?.getString('last_name');\n   }\n \n   static String? getUserGender() {\n     return _prefs?.getString('gender');\n@@ -60,8 +60,11 @@\n   static String? getUserName() {\n     return _prefs?.getString('username');\n   }\n \n+  static String? getBirthday() {\n+    return _prefs?.getString('birthday');\n+  }\n   static delete() {\n     return _prefs?.clear();\n   }\n }\n"
+                },
+                {
+                    "date": 1683668752353,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,8 +35,15 @@\n   static Future setBirthday(String value) async {\n     await _prefs?.setString('birthday', value);\n   }\n \n+  static Future setUserId(String value) async {\n+    await _prefs?.setString('user_id', value);\n+  }\n+  static Future setUserStatus(String value) async {\n+    await _prefs?.setString('user_status', value);\n+  }\n+\n //geter\n   static String? getToken() {\n     return _prefs?.getString('token');\n   }\n@@ -64,8 +71,16 @@\n   static String? getBirthday() {\n     return _prefs?.getString('birthday');\n   }\n \n+  static String? getUserId() {\n+    return _prefs?.getString('user_id');\n+  }\n+\n+  static String? getUserStatus() {\n+    return _prefs?.getString('user_status');\n+  }\n+\n   static delete() {\n     return _prefs?.clear();\n   }\n }\n"
+                }
+            ],
+            "date": 1683667665197,
+            "name": "Commit-0",
+            "content": "import 'package:shared_preferences/shared_preferences.dart';\n\nclass SimpleUserPreferences {\n  static SharedPreferences? _prefs;\n\n  static Future<void> init() async {\n    _prefs = await SharedPreferences.getInstance();\n  }\n\n//setter\n  static Future setToken(String value) async {\n    await _prefs?.setString('token', value);\n  }\n\n  static Future setPhoneNumber(String value) async {\n    await _prefs?.setString('phone_number', value);\n  }\n\n  static Future setFirstName(String value) async {\n    await _prefs?.setString('first_name', value);\n  }\n\n  static Future setLastName(String value) async {\n    await _prefs?.setString('last_name', value);\n  }\n\n  static Future setUserGender(String value) async {\n    await _prefs?.setString('gender', value);\n  }\n\n  \n  static Future setUserName(String value) async {\n    await _prefs?.setString('username', value);\n  }\n\n  \n  static Future setBirthday(String value) async {\n    await _prefs?.setString('birthday', value);\n  }\n\n//geter\n  static String? getToken() {\n    return _prefs?.getString('token');\n  }\n\n  static String? getPhoneNumber() {\n    return _prefs?.getString('phone_number');\n  }\n\n  static String? getFirstName() {\n    return _prefs?.getString('gender');\n  }\n\n  static String? getLastName() {\n    return _prefs?.getString('gender');\n  }\n\n  static String? getUserGender() {\n    return _prefs?.getString('gender');\n  }\n\n  static String? getUserName() {\n    return _prefs?.getString('username');\n  }\n\n\n  static delete() {\n    return _prefs?.clear();\n  }\n}\n"
+        }
+    ]
+}
