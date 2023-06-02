@@ -1,3 +1,6 @@
+// ignore_for_file: prefer_const_constructors_in_immutables, deprecated_member_use, prefer_const_constructors, sort_child_properties_last
+
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:lango/Constance/constance.dart';
 import 'package:lango/Constance/theme.dart';
@@ -15,7 +18,8 @@ class RController extends GetxController {
 }
 
 class RegisterScreen extends StatefulWidget {
-  RegisterScreen({Key? key}) : super(key: key);
+  final String userId;
+  RegisterScreen({Key? key, required this.userId}) : super(key: key);
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -92,18 +96,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           child: Padding(
                             padding: const EdgeInsets.all(15),
                             child: TextField(
+                              controller: textEditingController1,
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 suffixIcon: IconButton(
                                   icon: AppTheme.isLightTheme
                                       ? Image.asset(
-                                          ConstanceData.p8,
-                                          height: 21,
-                                        )
+                                    ConstanceData.p8,
+                                    height: 21,
+                                  )
                                       : Image.asset(
-                                          ConstanceData.dp8,
-                                          height: 21,
-                                        ),
+                                    ConstanceData.dp8,
+                                    height: 21,
+                                  ),
                                   onPressed: () {},
                                 ),
                                 labelText: 'First name',
@@ -124,18 +129,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             padding: const EdgeInsets.only(
                                 left: 15, bottom: 15, top: 10, right: 15),
                             child: TextField(
+                              controller: textEditingController2,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
                                   suffixIcon: IconButton(
                                     icon: AppTheme.isLightTheme
                                         ? Image.asset(
-                                            ConstanceData.p8,
-                                            height: 21,
-                                          )
+                                      ConstanceData.p8,
+                                      height: 21,
+                                    )
                                         : Image.asset(
-                                            ConstanceData.dp8,
-                                            height: 21,
-                                          ),
+                                      ConstanceData.dp8,
+                                      height: 21,
+                                    ),
                                     onPressed: () {},
                                   ),
                                   //click: () {},
@@ -201,18 +207,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               right: 15,
                             ),
                             child: TextField(
+                              controller: textEditingController4,
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 suffixIcon: IconButton(
                                   icon: AppTheme.isLightTheme
                                       ? Image.asset(
-                                          ConstanceData.u1,
-                                          height: 21,
-                                        )
+                                    ConstanceData.u1,
+                                    height: 21,
+                                  )
                                       : Image.asset(
-                                          ConstanceData.dp8,
-                                          height: 21,
-                                        ),
+                                    ConstanceData.dp8,
+                                    height: 21,
+                                  ),
                                   onPressed: () {},
                                 ),
                                 labelText: 'Username',
@@ -233,18 +240,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             padding: const EdgeInsets.only(
                                 left: 15, bottom: 15, top: 10, right: 15),
                             child: TextField(
+                              controller: textEditingController5,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
                                   suffixIcon: IconButton(
                                     icon: AppTheme.isLightTheme
                                         ? Image.asset(
-                                            ConstanceData.p8,
-                                            height: 21,
-                                          )
+                                      ConstanceData.p8,
+                                      height: 21,
+                                    )
                                         : Image.asset(
-                                            ConstanceData.dp8,
-                                            height: 21,
-                                          ),
+                                      ConstanceData.dp8,
+                                      height: 21,
+                                    ),
                                     onPressed: () {},
                                   ),
                                   //click: () {},
@@ -271,14 +279,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
               height: 10,
             ),
             Center(
-              child: InkWell(
+              child: controller.inprogressGetSignup
+                  ? CupertinoActivityIndicator()
+                  : InkWell(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => ChooselanguageScreen(),
-                    ),
-                  );
+                  controller.sendSignupNumer(
+                      context,
+                      textEditingController1.text,
+                      textEditingController2.text,
+                      Gender.string,
+                      textEditingController4.text,
+                      textEditingController5.text);
+                  setState(() {
+                    controller.inprogressGetSignup = true;
+                  });
                 },
                 child: Container(
                   height: 48,
@@ -290,11 +304,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: Center(
                     child: Text(
                       "Continue",
-                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                            fontFamily: 'ProductSans',
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
+                      style:
+                      Theme.of(context).textTheme.bodyText1!.copyWith(
+                        fontFamily: 'ProductSans',
+                        fontSize: 14,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
@@ -411,6 +426,21 @@ class _ListWidgetState extends State<ListWidget> {
                   },
                   controlAffinity: ListTileControlAffinity.trailing,
                 ),
+                height: 60,
+                child: RadioListTile(
+                    activeColor: Color(0xFF3757FF),
+                    title: Text("Male"),
+                    value: "Male",
+                    groupValue: Gender.value,
+                    onChanged: (value) {
+                      setState(() {
+                        Gender.value = value.toString();
+                        _gender.text = Gender.value;
+                        Navigator.of(context).pop();
+                        //print(Gender);
+                      });
+                    },
+                    controlAffinity: ListTileControlAffinity.trailing),
               ),
               SizedBox(
                 height: 4,

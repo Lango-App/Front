@@ -1,0 +1,26 @@
+{
+    "sourceFile": "lib/Register/viewmodel/get_number_view_model.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1683634288642,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1683668107399,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,13 @@\n // ignore_for_file: use_build_context_synchronously\n \n import 'package:flutter/material.dart';\n import 'package:lango/Register/OTP.dart';\n-import 'package:taha/Register/Register.dart';\n-import 'package:taha/components/call_api.dart';\n-import 'package:taha/config/defines.dart';\n-import 'package:taha/utils/shared_preferenc/perf.dart';\n-import 'package:taha/utils/strorage/secure.dart';\n+import 'package:lango/Register/Register.dart';\n+import 'package:lango/components/call_api.dart';\n+import 'package:lango/config/defines.dart';\n+import 'package:lango/utils/shared_preferenc/perf.dart';\n+import 'package:lango/utils/strorage/secure.dart';\n \n class GetNumberViewModel {\n   bool inprogressGetNumber = false;\n   Future sendPhoneNumer(BuildContext context, String number) {\n"
+                },
+                {
+                    "date": 1683669698217,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,11 @@\n         await SimpleUserStorage().setToken(data['token']);\n         return Navigator.push(\n           context,\n           MaterialPageRoute(\n-            builder: (_) => RegisterScreen(),\n+            builder: (_) => RegisterScreen(\n+              userId: data['user_id'].toString(),\n+            ),\n           ),\n         );\n       },\n     );\n"
+                }
+            ],
+            "date": 1683634288642,
+            "name": "Commit-0",
+            "content": "// ignore_for_file: use_build_context_synchronously\n\nimport 'package:flutter/material.dart';\nimport 'package:lango/Register/OTP.dart';\nimport 'package:taha/Register/Register.dart';\nimport 'package:taha/components/call_api.dart';\nimport 'package:taha/config/defines.dart';\nimport 'package:taha/utils/shared_preferenc/perf.dart';\nimport 'package:taha/utils/strorage/secure.dart';\n\nclass GetNumberViewModel {\n  bool inprogressGetNumber = false;\n  Future sendPhoneNumer(BuildContext context, String number) {\n    return sendRequest(\n      context,\n      RequestTypes.POST,\n      Defines.getPhoneNumber,\n      {'phone_number': number},\n      onSuccessCallback: (statusCode, data) {\n        inprogressGetNumber = false;\n        return Navigator.push(\n          context,\n          MaterialPageRoute(\n            builder: (_) => OtpChecking(\n              userId: data['user_id'].toString(),\n            ),\n          ),\n        );\n      },\n      onNetworkError: () {},\n      onErrorCallback: (statusCode, message) {},\n    );\n  }\n\n  Future sendOtp(BuildContext context, String code, String userId) {\n    return sendRequest(\n      context,\n      RequestTypes.POST,\n      Defines.checkOtp,\n      {'user_id': userId, 'code': code},\n      onSuccessCallback: (statusCode, data) async {\n        await SimpleUserPreferences.setToken(data['token']);\n        await SimpleUserStorage().setToken(data['token']);\n        return Navigator.push(\n          context,\n          MaterialPageRoute(\n            builder: (_) => RegisterScreen(),\n          ),\n        );\n      },\n    );\n  }\n}\n"
+        }
+    ]
+}

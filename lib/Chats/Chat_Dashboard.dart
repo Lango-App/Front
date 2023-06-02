@@ -25,9 +25,17 @@ class ChatDashboardState extends State<ChatDashboard> {
           children: [
             Container(
               padding:
-                  EdgeInsets.only(left: 30, right: 30, bottom: 25, top: 30),
+                  EdgeInsets.only(left: 20, right: 20, bottom: 20, top: 30),
               child: Row(
                 children: [
+                  IconButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    icon: SvgPicture.asset(
+                        'assets/images/img_arrowleft_gray_900_24x24.svg'),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
                   Flexible(
                     child: Container(
                       height: 50 + MediaQuery.of(context).padding.bottom,
@@ -72,8 +80,10 @@ class ChatDashboardState extends State<ChatDashboard> {
                                               'assets/images/img_user_gray_900_24x24.svg'),
                                           Padding(
                                             padding: const EdgeInsets.only(
-                                              left: 8,
-                                            ),
+                                                left: 8,
+                                                top: 11,
+                                                right: 20,
+                                                bottom: 9),
                                             child: Text(
                                               "group".tr,
                                               style: TextStyle(

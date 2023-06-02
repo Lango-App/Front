@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 6,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1683457905893,
@@ -32,6 +32,14 @@
                 {
                     "date": 1683552394138,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n \r\n import 'package:lango/Constance/constance.dart';\r\n import 'package:lango/Constance/theme.dart';\r\n import 'package:lango/Dashboard/Dashboard.dart';\r\n+import 'package:lango/Register/Get_Number.dart';\r\n import 'package:lango/Register/Register.dart';\r\n import 'package:lango/main.dart';\r\n import 'package:flutter/material.dart';\r\n \r\n@@ -39,9 +40,9 @@\n             onTap: (() {\r\n               Navigator.push(\r\n                 context,\r\n                 MaterialPageRoute(\r\n-                  builder: (_) => RegisterScreen(),\r\n+                  builder: (_) => GetnumberScreen(),\r\n                 ),\r\n               );\r\n             }),\r\n             child: Container(\r\n"
+                },
+                {
+                    "date": 1683634291108,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n // ignore_for_file: prefer_const_constructors, deprecated_member_use, unused_import\n \n-import 'package:taha/Constance/constance.dart';\n+import 'package:lango/Constance/constance.dart';\n import 'package:taha/Constance/theme.dart';\n import 'package:taha/Dashboard/Dashboard.dart';\n import 'package:taha/Register/Get_Number.dart';\n import 'package:taha/Register/Register.dart';\n"
+                },
+                {
+                    "date": 1683636090035,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n // ignore_for_file: prefer_const_constructors, deprecated_member_use, unused_import\n \n import 'package:lango/Constance/constance.dart';\n-import 'package:langooo/Constance/theme.dart';\n+import 'package:lango/Constance/theme.dart';\n import 'package:lango/Dashboard/Dashboard.dart';\n import 'package:lango/Register/Get_Number.dart';\n import 'package:lango/Register/Register.dart';\n import 'package:lango/main.dart';\n"
                 }
             ],
             "date": 1683457905893,
