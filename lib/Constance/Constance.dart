@@ -110,5 +110,62 @@ class ConstanceData {
 
   static String pay_s = "${bseImageUrl}pay_s.png";
   static String pay_f = "${bseImageUrl}pay_f.png";
+
+  static String t1 = bseImageUrl + "t1.png";
+  static String n9 = bseImageUrl + "n9.png";
+  static String b7 = bseImageUrl + "b7.png";
+  static String b8 = bseImageUrl + "b8.png";
+  static String b9 = bseImageUrl + "b9.png";
+  static String b10 = bseImageUrl + "b10.png";
+  static String n33 = bseImageUrl + "n33.png";
+  static String n34 = bseImageUrl + "n34.png";
+  static String n35 = bseImageUrl + "n35.png";
+  static String n36 = bseImageUrl + "n36.png";
+  static String n37 = bseImageUrl + "n37.png";
+
+  static String tinyBack = bseImageUrl + "Button-tiny.png";
+  static String ListView = bseImageUrl + "listView.png";
+  static String listIcon = bseImageUrl + "Subtract.png";
+  static String timeIcon = bseImageUrl + "Union.png";
+  static String subject = bseImageUrl + "subject.png";
+  static String interface = bseImageUrl + "interface.png";
+  static String interface1 = bseImageUrl + "interface1.png";
+  static String timeIconGray = bseImageUrl + "Union_gray.png";
+  static String backSmall = bseImageUrl + "Button-small.png";
+  static String question = bseImageUrl + "question.png";
+  static String backSmallWhite = bseImageUrl + "Button-small-white.png";
+  static String arrowLeft = bseImageUrl + "arrow-left.png";
+  static String arrowRight = bseImageUrl + "arrow.png";
+  static String r2Green = bseImageUrl + "r2_green.png";
+  static String doneFrame = bseImageUrl + "Frame 47199.png";
+  static String jet = bseImageUrl + "mooshak.png";
+  static String grade = bseImageUrl + "Frame 47202.png";
+  static String arrowDown = bseImageUrl + "arrow_down.png";
+  static String star = bseImageUrl + "Star 1 _Stroke_.png";
+  static String coin = bseImageUrl + "Coin.png";
+  static String backD = bseImageUrl + "back_done.png";
+  static String backArrow = bseImageUrl + "backArrow.png";
+  static String course = bseImageUrl + "subject_course.png";
+  static String subTeach = bseImageUrl + "subject_straight.png";
+  static String likeGray = bseImageUrl + "like_gray.png";
+  static String likePink = bseImageUrl + "like_pink.png";
+  static String contact = bseImageUrl + "contact.png";
+  static String coins = bseImageUrl + "Frame 34678.png";
+
+  static String n2 = bseImageUrl + "n2.png";
+  static String n15 = bseImageUrl + "n15.png";
+  static String n21 = bseImageUrl + "n21.png";
+  static String dn21 = bseImageUrl + "dn21.png";
+
+  static String co_mem = "${bseImageUrl}co_mem.png";
+  static String co_file = "${bseImageUrl}co_file.png";
+  static String co_jo = "${bseImageUrl}co_jo.png";
+  static String co_re = "${bseImageUrl}co_re.png";
+  static String co_qu_gr = "${bseImageUrl}co_qu_gr.png";
+  static String co_qu_gray = "${bseImageUrl}co_qu_gray.png";
+  static String co_qu_ye = "${bseImageUrl}co_qu_ye.png";
+  static String co_qu_ar = "${bseImageUrl}co_qu_ar.png";
+
+
 }
 

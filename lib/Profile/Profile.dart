@@ -5,6 +5,7 @@ import 'package:lango/Profile/Profile_Saved.dart';
 
 import 'Profile_Comment.dart';
 import 'Profile_Post.dart';
+import 'Settings.dart';
 
 
 class Profile extends StatefulWidget {
@@ -47,12 +48,22 @@ class _ProfileState extends State<Profile> {
                 ),
 
                 Spacer(),
-                Image.asset(
-                  AppTheme.isLightTheme
-                      ? ConstanceData.pset
-                      : ConstanceData.pset,
-                  height: 25.16,
-                  width: 25.16,
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => SettingScreen(),
+                      ),
+                    );
+                  },
+                  child: Image.asset(
+                    AppTheme.isLightTheme
+                        ? ConstanceData.pset
+                        : ConstanceData.pset,
+                    height: 25.16,
+                    width: 25.16,
+                  ),
                 ),
               ],
             ),

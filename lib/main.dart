@@ -11,7 +11,7 @@ import 'package:lango/Register/Choose_Language.dart';
 import 'package:lango/Register/Get_Number.dart';
 import 'package:lango/Register/OTP.dart';
 import 'package:lango/Register/Register.dart';
-import 'package:lango/Register/Settings.dart';
+import 'package:lango/Profile//Settings.dart';
 import 'package:lango/Register/Choose_Language.dart';
 import 'package:lango/utils/shared_preferenc/perf.dart';
 import 'package:lango/utils/strorage/secure.dart';
@@ -29,10 +29,30 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  static setCustomeTheme(BuildContext context, int index) {
+    final _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
+    state!.setCustomeTheme(index);
+  }
 
-  // This widget is the root of your application.
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  setCustomeTheme(int index) {
+    if (index == 6) {
+      setState(() {
+        AppTheme.isLightTheme = true;
+      });
+    } else if (index == 7) {
+      setState(() {
+        AppTheme.isLightTheme = false;
+      });
+    } else {}
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

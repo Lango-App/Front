@@ -7,6 +7,11 @@ import 'package:lango/Constance/Constance.dart';
 
 import '../Chats/Chat_Dashboard.dart';
 import 'Coin_Pack.dart';
+import 'Notification.dart';
+import 'package:flutter_countdown_timer/index.dart';
+import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
+
+final int endTime = DateTime.now().millisecondsSinceEpoch + 100000 * 30 * 24 + 1000;
 
 class DashboardScreen extends StatefulWidget {
   DashboardScreen({Key? key}) : super(key: key);
@@ -15,9 +20,18 @@ class DashboardScreen extends StatefulWidget {
   State<DashboardScreen> createState() => _DashboardScreen1State();
 }
 
+void onEnd() {
+  //print('onEnd');
+}
+
 class _DashboardScreen1State extends State<DashboardScreen> {
+
   @override
   Widget build(BuildContext context) {
+    CountdownTimerController controller;
+    controller = CountdownTimerController(
+      endTime: endTime,
+    );
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(
@@ -39,17 +53,34 @@ class _DashboardScreen1State extends State<DashboardScreen> {
                 Text(
                   "Dashboard",
                   style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 Spacer(),
-                Image.asset(
-                  AppTheme.isLightTheme
-                      ? ConstanceData.fe_no
-                      : ConstanceData.fe_no_d,
-                  height: 25,
+                Container(
+                  height: 32,
+                  width: 73,
+                  child: FloatingActionButton(
+                    heroTag: UniqueKey(),
+                    elevation: 0,
+                    onPressed: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Notificationscreen(),
+                          )
+                      )
+                    },
+                    child: Image.asset(
+                      AppTheme.isLightTheme
+                          ? ConstanceData.fe_no
+                          : ConstanceData.fe_no_d,
+                      height: 25,
+                    ),
+                  ),
                 ),
+
                 SizedBox(
                   width: 10,
                 ),
@@ -124,27 +155,48 @@ class _DashboardScreen1State extends State<DashboardScreen> {
                                           .textTheme
                                           .bodyText1!
                                           .copyWith(
-                                            fontSize: 12,
-                                            color:
-                                                Theme.of(context).disabledColor,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                        fontSize: 12,
+                                        color:
+                                        Theme.of(context).disabledColor,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ],
                                 ),
                                 SizedBox(
                                   height: 20,
                                 ),
-                                Text(
-                                  "24 : 12 : 12",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyText1!
-                                      .copyWith(
-                                        fontSize: 26,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                )
+                                Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: CountdownTimer(
+                                    widgetBuilder: (_, CurrentRemainingTime? time) {
+                                      if (time == null) {
+                                        return Text(
+                                          "24:12:12",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText1!
+                                              .copyWith(
+                                            fontSize: 26,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        );
+                                      }
+                                      return Text(
+                                        '${(time.hours == null || time.hours == 0) ? '00' : time.hours}:${(time.min == null || time.min == 0) ? '00' : time.min}:${(time.sec == null || time.sec == 0) ? '00' : time.sec}',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 26,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      );
+                                    },
+                                    controller: controller,
+                                    onEnd: onEnd,
+                                    endTime: endTime,
+                                  ),
+                                ),
+
                               ],
                             ),
                             Spacer(),
@@ -210,11 +262,11 @@ class _DashboardScreen1State extends State<DashboardScreen> {
                                               .textTheme
                                               .bodyText1!
                                               .copyWith(
-                                                fontSize: 12,
-                                                color: Theme.of(context)
-                                                    .disabledColor,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                            fontSize: 12,
+                                            color: Theme.of(context)
+                                                .disabledColor,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
                                         // Image.asset(
                                         //   ConstanceData.h14,
@@ -237,11 +289,11 @@ class _DashboardScreen1State extends State<DashboardScreen> {
                                               .textTheme
                                               .bodyText1!
                                               .copyWith(
-                                                fontSize: 12,
-                                                color: Theme.of(context)
-                                                    .disabledColor,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                            fontSize: 12,
+                                            color: Theme.of(context)
+                                                .disabledColor,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -256,9 +308,9 @@ class _DashboardScreen1State extends State<DashboardScreen> {
                                               .textTheme
                                               .bodyText1!
                                               .copyWith(
-                                                fontSize: 22,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -301,7 +353,7 @@ class _DashboardScreen1State extends State<DashboardScreen> {
                                     children: [
                                       Column(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             "Solved Questions",
@@ -309,11 +361,11 @@ class _DashboardScreen1State extends State<DashboardScreen> {
                                                 .textTheme
                                                 .bodyText1!
                                                 .copyWith(
-                                                  fontSize: 12,
-                                                  color: Theme.of(context)
-                                                      .disabledColor,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
+                                              fontSize: 12,
+                                              color: Theme.of(context)
+                                                  .disabledColor,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
                                           SizedBox(
                                             height: 5,
@@ -324,9 +376,9 @@ class _DashboardScreen1State extends State<DashboardScreen> {
                                                 .textTheme
                                                 .bodyText1!
                                                 .copyWith(
-                                                  fontSize: 22,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -381,7 +433,7 @@ class _DashboardScreen1State extends State<DashboardScreen> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Image.asset(
                                         AppTheme.isLightTheme
@@ -398,11 +450,11 @@ class _DashboardScreen1State extends State<DashboardScreen> {
                                             .textTheme
                                             .bodyText1!
                                             .copyWith(
-                                              fontSize: 14,
-                                              color: Theme.of(context)
-                                                  .disabledColor,
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                          fontSize: 14,
+                                          color: Theme.of(context)
+                                              .disabledColor,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                       SizedBox(
                                         height: 30,
@@ -465,11 +517,11 @@ class _DashboardScreen1State extends State<DashboardScreen> {
                                           .textTheme
                                           .bodyText1!
                                           .copyWith(
-                                            fontSize: 14,
-                                            color:
-                                                Theme.of(context).disabledColor,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                        fontSize: 14,
+                                        color:
+                                        Theme.of(context).disabledColor,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                     SizedBox(
                                       height: 5,
@@ -480,9 +532,9 @@ class _DashboardScreen1State extends State<DashboardScreen> {
                                           .textTheme
                                           .bodyText1!
                                           .copyWith(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                     SizedBox(
                                       height: 30,
@@ -559,11 +611,11 @@ class _DashboardScreen1State extends State<DashboardScreen> {
                                           .textTheme
                                           .bodyText1!
                                           .copyWith(
-                                            fontSize: 12,
-                                            color:
-                                                Theme.of(context).disabledColor,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                        fontSize: 12,
+                                        color:
+                                        Theme.of(context).disabledColor,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -576,9 +628,9 @@ class _DashboardScreen1State extends State<DashboardScreen> {
                                       .textTheme
                                       .bodyText1!
                                       .copyWith(
-                                        fontSize: 26,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                    fontSize: 26,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ],
                             ),
@@ -601,10 +653,10 @@ class _DashboardScreen1State extends State<DashboardScreen> {
                                 elevation: 0,
                                 onPressed: () => {
                                   Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                  builder: (context) => CoinPackageScreen(),
-                                  )
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => CoinPackageScreen(),
+                                      )
                                   )
                                 },
                                 child: Image.asset(

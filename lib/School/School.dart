@@ -1,6 +1,12 @@
 import 'package:lango/Constance/Constance.dart';
 import 'package:lango/Constance/Theme.dart';
 import 'package:flutter/material.dart';
+import 'package:lango/Feed/Feed.dart';
+import 'package:lango/School/Class.dart';
+import 'package:lango/School/Course_List.dart';
+import 'package:lango/School/Practice.dart';
+import 'package:lango/School/Question_List.dart';
+import 'package:lango/School/Teacher_List.dart';
 
 class School extends StatefulWidget {
   School({Key? key}) : super(key: key);
@@ -35,9 +41,9 @@ class _SchoolState extends State<School> {
                 Text(
                   "Hi, User",
                   style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 Spacer(),
               ],
@@ -54,13 +60,141 @@ class _SchoolState extends State<School> {
                 children: [
                   Row(
                     children: [
-                      com(ConstanceData.sch_cp, "Current practice", "0 quiz",
-                          "#003F88"),
+                      Expanded(
+                        child : new GestureDetector(
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => CourseListScreen(),
+                              ),
+                            );
+                          },
+                          child: new Container(
+                            height: 150,
+                            decoration: BoxDecoration(
+                              color: HexColor("#003F88"),
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        ConstanceData.sch_cp,
+                                        height: 30,
+                                      ),
+                                      Spacer(),
+                                      Image.asset(
+                                        AppTheme.isLightTheme
+                                            ? ConstanceData.sch_ar
+                                            : ConstanceData.sch_ar,
+                                        height: 20,
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 30,
+                                  ),
+                                  Text(
+
+                                    "Current practice",
+                                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                      color: HexColor("#FFFFFF"),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(
+                                    "0 quiz",
+                                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                      color: HexColor("#A3ABB2"),
+                                      fontSize: 12,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+
+                        ),
+                      ),
+                      // com(ConstanceData.sch_cp, "Current practice", "0 quiz", "#003F88", 1),
                       SizedBox(
                         width: 10,
                       ),
-                      com(ConstanceData.sch_pc, "Practice completed",
-                          "120 quiz", "#FDC500"),
+                      Expanded(
+                        child : new GestureDetector(
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => PracticeScreen(),
+                              ),
+                            );
+                          },
+                          child: new Container(
+                            height: 150,
+                            decoration: BoxDecoration(
+                              color: HexColor("#FDC500"),
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        ConstanceData.sch_pc,
+                                        height: 30,
+                                      ),
+                                      Spacer(),
+                                      Image.asset(
+                                        AppTheme.isLightTheme
+                                            ? ConstanceData.sch_ar
+                                            : ConstanceData.sch_ar,
+                                        height: 20,
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 30,
+                                  ),
+                                  Text(
+
+                                    "Practice completed",
+                                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                      color: HexColor("#FFFFFF"),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(
+                                    "120 quiz",
+                                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                      color: HexColor("#A3ABB2"),
+                                      fontSize: 12,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+
+                        ),
+                      ),
+                      // com(ConstanceData.sch_pc, "Practice completed","120 quiz", "#FDC500", 2),
                     ],
                   ),
                   SizedBox(
@@ -68,20 +202,156 @@ class _SchoolState extends State<School> {
                   ),
                   Row(
                     children: [
-                      com(ConstanceData.sch_coc, "Course completed",
-                          "120 course", "#FFD500"),
+                      Expanded(
+                        child : new GestureDetector(
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => CourseListScreen(),
+                              ),
+                            );
+                          },
+                          child: new Container(
+                            height: 150,
+                            decoration: BoxDecoration(
+                              color: HexColor("#FFD500"),
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        ConstanceData.sch_coc,
+                                        height: 30,
+                                      ),
+                                      Spacer(),
+                                      Image.asset(
+                                        AppTheme.isLightTheme
+                                            ? ConstanceData.sch_ar
+                                            : ConstanceData.sch_ar,
+                                        height: 20,
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 30,
+                                  ),
+                                  Text(
+
+                                    "Course completed",
+                                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                      color: HexColor("#FFFFFF"),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(
+                                    "120 course",
+                                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                      color: HexColor("#A3ABB2"),
+                                      fontSize: 12,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+
+                        ),
+                      ),
+                      // com(ConstanceData.sch_coc, "Course completed", "120 course", "#FFD500", 3),
                       SizedBox(
                         width: 10,
                       ),
-                      com(ConstanceData.sch_coa, "Active course", "1 course",
-                          "#00509D"),
+                      Expanded(
+                        child : new GestureDetector(
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => ClassScreen(),
+                              ),
+                            );
+                          },
+                          child: new Container(
+                            height: 150,
+                            decoration: BoxDecoration(
+                              color: HexColor("#00509D"),
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        ConstanceData.sch_coa,
+                                        height: 30,
+                                      ),
+                                      Spacer(),
+                                      Image.asset(
+                                        AppTheme.isLightTheme
+                                            ? ConstanceData.sch_ar
+                                            : ConstanceData.sch_ar,
+                                        height: 20,
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 30,
+                                  ),
+                                  Text(
+
+                                    "Active course",
+                                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                      color: HexColor("#FFFFFF"),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(
+                                    "1 course",
+                                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                      color: HexColor("#A3ABB2"),
+                                      fontSize: 12,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+
+                        ),
+                      ),
+                      // com(ConstanceData.sch_coa, "Active course", "1 course", "#00509D" , 4),
                     ],
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   InkWell(
-                    child: com2(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CourseListScreen(),
+                        ),
+                      );
+                    },
+                    child: com(
                         AppTheme.isLightTheme
                             ? ConstanceData.sch_cou
                             : ConstanceData.sch_cou,
@@ -91,21 +361,41 @@ class _SchoolState extends State<School> {
                   SizedBox(
                     height: 10,
                   ),
-                  com2(
-                      AppTheme.isLightTheme
-                          ? ConstanceData.sch_me
-                          : ConstanceData.sch_me,
-                      "Mentors",
-                      "30+"),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TeacherListScreen(),
+                        ),
+                      );
+                    },
+                    child: com(
+                        AppTheme.isLightTheme
+                            ? ConstanceData.sch_me
+                            : ConstanceData.sch_me,
+                        "Mentors",
+                        "30+"),
+                  ),
                   SizedBox(
                     height: 10,
                   ),
-                  com2(
-                      AppTheme.isLightTheme
-                          ? ConstanceData.sch_pr
-                          : ConstanceData.sch_pr,
-                      "Practices",
-                      "100+"),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PracticeScreen(),
+                        ),
+                      );
+                    },
+                    child: com(
+                        AppTheme.isLightTheme
+                            ? ConstanceData.sch_pr
+                            : ConstanceData.sch_pr,
+                        "Practices",
+                        "100+"),
+                  ),
                   SizedBox(
                     height: 10,
                   ),
@@ -120,64 +410,7 @@ class _SchoolState extends State<School> {
       ),
     );
   }
-
-  Widget com(String img, String text1, String text2, String color) {
-    return Expanded(
-      child: Container(
-        height: 150,
-        decoration: BoxDecoration(
-          color: HexColor(color),
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Image.asset(
-                    img,
-                    height: 30,
-                  ),
-                  Spacer(),
-                  Image.asset(
-                    AppTheme.isLightTheme
-                        ? ConstanceData.sch_ar
-                        : ConstanceData.sch_ar,
-                    height: 20,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Text(
-                text1,
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                      color: HexColor("#FFFFFF"),
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                    ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
-                text2,
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                      color: HexColor("#A3ABB2"),
-                      fontSize: 12,
-                    ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget com2(String img, String tex, String tex2) {
+  Widget com(String img, String tex, String tex2) {
     return Container(
       height: 90,
       width: double.infinity,
@@ -215,9 +448,9 @@ class _SchoolState extends State<School> {
                 Text(
                   tex,
                   style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(
                   height: 5,
@@ -225,9 +458,9 @@ class _SchoolState extends State<School> {
                 Text(
                   tex2,
                   style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                        fontSize: 10,
-                        color: Theme.of(context).disabledColor,
-                      ),
+                    fontSize: 10,
+                    color: Theme.of(context).disabledColor,
+                  ),
                 )
               ],
             ),
