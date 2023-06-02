@@ -8,6 +8,9 @@ import 'package:lango/School/Practice.dart';
 import 'package:lango/School/Question_List.dart';
 import 'package:lango/School/Teacher_List.dart';
 
+import 'Practice_Completed.dart';
+import 'Practice_Done.dart';
+
 class School extends StatefulWidget {
   School({Key? key}) : super(key: key);
 
@@ -135,7 +138,7 @@ class _SchoolState extends State<School> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (_) => PracticeScreen(),
+                                builder: (_) => PracticeCompletedScreen(),
                               ),
                             );
                           },
@@ -194,7 +197,7 @@ class _SchoolState extends State<School> {
 
                         ),
                       ),
-                      // com(ConstanceData.sch_pc, "Practice completed","120 quiz", "#FDC500", 2),
+                      // com(ConstanceData.sch_pc, "Practice_completed","120 quiz", "#FDC500", 2),
                     ],
                   ),
                   SizedBox(

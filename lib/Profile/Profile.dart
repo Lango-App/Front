@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lango/Constance/Theme.dart';
 import 'package:lango/Constance/Constance.dart';
+import 'package:lango/Profile/Follower.dart';
+import 'package:lango/Profile/Following.dart';
 import 'package:lango/Profile/Profile_Saved.dart';
 
 import 'Profile_Comment.dart';
@@ -137,23 +139,42 @@ class _ProfileState extends State<Profile> {
                           Spacer(),
                           Column(
                             children: [
-                              Text(
-                                "150",
-                                style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.normal,
-                                  color: Color.fromRGBO(166, 166, 166, 100),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => FollowingScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  "150",
+                                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.normal,
+                                    color: Color.fromRGBO(166, 166, 166, 100),
+                                  ),
                                 ),
-
                               ),
-                              Text(
-                                "Following",
-                                style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
-                                  color: Color.fromRGBO(166, 166, 166, 100),
-                                ),
 
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => FollowingScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  "Following",
+                                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                    color: Color.fromRGBO(166, 166, 166, 100),
+                                  ),
+                                ),
                               ),
                             ],
 
@@ -161,24 +182,46 @@ class _ProfileState extends State<Profile> {
                           Spacer(),
                           Column(
                             children: [
-                              Text(
-                                "250",
-                                style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.normal,
-                                  color: Color.fromRGBO(166, 166, 166, 100),
-                                ),
 
-                              ),
-                              Text(
-                                "Follower",
-                                style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
-                                  color: Color.fromRGBO(166, 166, 166, 100),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => FollowingScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  "250",
+                                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.normal,
+                                    color: Color.fromRGBO(166, 166, 166, 100),
+                                  ),
                                 ),
-
                               ),
+
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => FollowingScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  "Follower",
+                                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                    color: Color.fromRGBO(166, 166, 166, 100),
+                                  ),
+                                ),
+                              ),
+
+
                             ],
 
                           )
