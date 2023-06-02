@@ -7,23 +7,28 @@ import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class RController extends GetxController {
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
-  }
+  TextEditingController genderController = TextEditingController();
+  RxString Gender = "Gender".obs;
+
+  // @override
+  // void onInit() {
+  //   // TODO: implement onInit
+  //   super.onInit();
+  // }
 }
 
 class RegisterScreen extends StatefulWidget {
   RegisterScreen({Key? key}) : super(key: key);
-
+  
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  RxString Gender = "Gender".obs;
-  TextEditingController _gender = TextEditingController();
+
+  final RController _controller = Get.put(RController());
+  //RxString Gender = "Gender".obs;
+  //TextEditingController _gender = TextEditingController();
   
   @override
   Widget build(BuildContext context) {
@@ -156,7 +161,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               padding: const EdgeInsets.all(15),
                               child: Obx(
                                 () => MyTextField(
-                                  controller: _gender,
+                                  controller: _controller.genderController,
                                   suffixIcon: IconButton(
                                     icon: AppTheme.isLightTheme
                                         ? Image.asset(
@@ -174,8 +179,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       context: context,
                                       builder: (BuildContext context) {
                                         return ListWidget(
-                                          Gender: Gender,
-                                          controller: _gender,
+                                          controller: _controller,
                                         );
                                       },
                                     );
@@ -308,11 +312,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
 }
 
 class ListWidget extends StatefulWidget {
-  final RxString Gender;
-  final TextEditingController controller;
+  final RController controller;
 
   const ListWidget({
-    required this.Gender,
     required this.controller,
   });
 
@@ -373,11 +375,11 @@ class _ListWidgetState extends State<ListWidget> {
                   activeColor: Color(0xFF3757FF),
                   title: Text('Female'),
                   value: 'Female',
-                  groupValue: widget.Gender.value!,
+                  groupValue: widget.controller.Gender.value!,
                   onChanged: (value) {
                     setState(() {
-                      widget.Gender.value = value.toString();
-                      widget.controller.text = value.toString();
+                      widget.controller.Gender.value = value.toString();
+                      widget.controller.genderController.text = value.toString();
                       Navigator.of(context).pop();
                     });
                   },
@@ -401,11 +403,11 @@ class _ListWidgetState extends State<ListWidget> {
                   activeColor: Color(0xFF3757FF),
                   title: Text("Male"),
                   value: "Male",
-                  groupValue: widget.Gender.value!,
+                  groupValue: widget.controller.Gender.value!,
                   onChanged: (value) {
                     setState(() {
-                      widget.Gender.value = value.toString();
-                      widget.controller.text = value.toString();
+                      widget.controller.Gender.value = value.toString();
+                      widget.controller.genderController.text = value.toString();
                       Navigator.of(context).pop();
                     });
                   },
@@ -434,11 +436,11 @@ class _ListWidgetState extends State<ListWidget> {
                   activeColor: Color(0xFF3757FF),
                   title: Text("Other"),
                   value: "Other",
-                  groupValue: widget.Gender.value!,
+                  groupValue: widget.controller.Gender.value!,
                   onChanged: (value) {
                     setState(() {
-                      widget.Gender.value = value.toString();
-                      widget.controller.text = value.toString();
+                      widget.controller.Gender.value = value.toString();
+                      widget.controller.genderController.text = value.toString();
                       Navigator.of(context).pop();
                     });
                   },

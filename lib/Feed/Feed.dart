@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_const_constructors, deprecated_member_use, file_names
-
+import 'package:like_button/like_button.dart';
 import 'package:flutter/foundation.dart';
 import 'package:lango/Constance/constance.dart';
 import 'package:lango/Constance/theme.dart';
@@ -179,20 +179,45 @@ class _FeedState extends State<Feed> {
                   ),
                   Row(
                     children: [
-                      Image.asset(
-                        AppTheme.isLightTheme
-                            ? ConstanceData.fe_li
-                            : ConstanceData.fe_li_d,
-                        height: 25,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "24",
-                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                      LikeButton(
+                        size: 20,
+                        circleColor:
+                            CircleColor(start: Color(0xff00ddff), end: Color(0xff0099cc)),
+                        bubblesColor: BubblesColor(
+                          dotPrimaryColor: Color(0xff33b5e5),
+                          dotSecondaryColor: Color(0xff0099cc),
+                        ),
+                        likeBuilder: (bool isLiked) {
+                          return Icon(
+                            Icons.favorite_border,
+                            color: isLiked ? Colors.pinkAccent : Colors.grey,
+                            size: 20,
+                          );
+                        },
+                        likeCount: 24,
+                        countDecoration: (count, likeCount) {
+                          count = Text(
+                            likeCount.toString(),
+                            style: Theme.of(context).textTheme.bodyText1!.copyWith(
                             fontSize: 10, fontWeight: FontWeight.bold),
+                          );
+                        },
+                        // countBuilder: LikeFunc(count, isLiked, text),
                       ),
+                      // Image.asset(
+                      //   AppTheme.isLightTheme
+                      //       ? ConstanceData.fe_li
+                      //       : ConstanceData.fe_li_d,
+                      //   height: 25,
+                      // ),
+                      // SizedBox(
+                      //   width: 10,
+                      // ),
+                      // Text(
+                      //   "24",
+                      //   style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                      //       fontSize: 10, fontWeight: FontWeight.bold),
+                      // ),
                       SizedBox(
                         width: 15,
                       ),
@@ -277,3 +302,21 @@ class _FeedState extends State<Feed> {
     );
   }
 }
+
+// function for like button
+// Widget? LikeFunc(int? count, bool isLiked, String text) {
+//   var color = isLiked ? Colors.deepPurpleAccent : Colors.grey;
+//   Widget? result;
+//   if (count == 0) {
+//     result = Text(
+//       "love",
+//       style: TextStyle(color: color),
+//     );
+//   } else {
+//     result = Text(
+//       text,
+//       style: TextStyle(color: color),
+//     );
+//   }
+//   return result;
+// }

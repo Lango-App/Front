@@ -2,6 +2,7 @@ import 'package:lango/Constance/Constance.dart';
 import 'package:lango/Constance/Theme.dart';
 import 'package:flutter/material.dart';
 import 'package:lango/School/Course_List.dart';
+import 'package:lango/School/Practice.dart';
 import 'package:lango/School/Question_List.dart';
 import 'package:lango/School/Teacher_List.dart';
 
@@ -126,7 +127,7 @@ class _SchoolState extends State<School> {
                       Navigator.push(
                         context, 
                         MaterialPageRoute(
-                          builder: (context) => QuestionListScreen(),
+                          builder: (context) => PracticeScreen(),
                         ),
                       );
                     },

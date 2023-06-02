@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last, deprecated_member_use
-
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lango/Constance/constance.dart';
 import 'package:lango/Constance/theme.dart';
 import 'package:flutter/material.dart';
@@ -196,6 +197,16 @@ class NewPostScreenState extends State<NewPostScreen> {
                         ),
                       ),
                     ),
+                    Row(
+                      children: [
+                        Spacer(),
+                        IconButton(
+                          onPressed: _pickFile,
+                          icon: SvgPicture.asset(
+                              'assets/images/img_trash_gray_200.svg'),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -205,4 +216,8 @@ class NewPostScreenState extends State<NewPostScreen> {
       ),
     );
   }
+}
+
+void _pickFile() async {
+  FilePickerResult? result = await FilePicker.platform.pickFiles();
 }
