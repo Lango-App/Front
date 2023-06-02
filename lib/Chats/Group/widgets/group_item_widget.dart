@@ -2,23 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 // ignore: must_be_immutable
-class GroupItemWidget extends StatefulWidget {
-  final String name;
-  final String photo;
-  final int membersCount;
-  final int unreadMsgs;
-  GroupItemWidget({
-    required this.photo,
-    required this.name,
-    required this.membersCount,
-    required this.unreadMsgs,
-  });
+class GroupItemWidget extends StatelessWidget {
+  GroupItemWidget();
 
-  @override
-  State<GroupItemWidget> createState() => _GroupItemWidgetState();
-}
-
-class _GroupItemWidgetState extends State<GroupItemWidget> {
   Size size = WidgetsBinding.instance.window.physicalSize /
       WidgetsBinding.instance.window.devicePixelRatio;
 
@@ -41,9 +27,39 @@ class _GroupItemWidgetState extends State<GroupItemWidget> {
       ),
       child: Row(
         children: [
-          CircleAvatar(
-            backgroundImage: AssetImage(
-              widget.photo,
+          Padding(
+            padding: EdgeInsets.zero,
+            child: IconButton(
+              visualDensity: VisualDensity(
+                vertical: -4,
+                horizontal: -4,
+              ),
+              iconSize: 46,
+              padding: EdgeInsets.all(0),
+              icon: Container(
+                alignment: Alignment.center,
+                width: 48,
+                height: 48,
+                padding: EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Color(0xFF3657ff),
+                  border: Border.all(
+                    color: Color(0xFF3657ff),
+                    width: getHorizontalSize(
+                      1.00,
+                    ),
+                  ),
+                  borderRadius: BorderRadius.circular(
+                    getHorizontalSize(
+                      24.00,
+                    ),
+                  ),
+                ),
+                child: SvgPicture.asset(
+                  'assets/images/img_user_white_a700_48x48.svg',
+                ),
+              ),
+              onPressed: () {},
             ),
           ),
           Padding(
@@ -57,8 +73,7 @@ class _GroupItemWidgetState extends State<GroupItemWidget> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  widget.name,
-                  // "IELTS 8",
+                  "IELTS 8",
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.left,
                   style: TextStyle(
@@ -73,7 +88,7 @@ class _GroupItemWidgetState extends State<GroupItemWidget> {
                   child: Padding(
                     padding: EdgeInsets.only(top: 8),
                     child: Text(
-                      widget.membersCount.toString() + " member",
+                      "5 member",
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.left,
                       style: TextStyle(
@@ -88,31 +103,6 @@ class _GroupItemWidgetState extends State<GroupItemWidget> {
               ],
             ),
           ),
-          const Spacer(),
-          Container(
-            child: widget.unreadMsgs != 0
-                ? Container(
-                    width: 30,
-                    height: 30,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      //borderRadius: BorderRadius.circular(100),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Text(
-                      widget.unreadMsgs > 1000
-                          ? "+1k"
-                          : widget.unreadMsgs.toString(),
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                        fontFamily: 'Product Sans',
-                      ),
-                    ),
-                  )
-                : SizedBox(),
-          )
         ],
       ),
     );

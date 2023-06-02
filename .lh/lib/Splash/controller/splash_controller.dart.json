@@ -1,0 +1,18 @@
+{
+    "sourceFile": "lib/Splash/controller/splash_controller.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1683634293675,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1683634293675,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\nimport 'package:lango/Dashboard/Dashboard.dart';\nimport 'package:taha/Dashboard/dashboard_screen.dart';\nimport 'package:taha/Splash/Onboard.dart';\nimport 'package:taha/utils/shared_preferenc/perf.dart';\nimport 'package:taha/utils/strorage/secure.dart';\n\nclass SplashController {\n  void checkServer(BuildContext context) async {\n    var token = SimpleUserStorage().getToken();\n    token.then((value) {\n      if (value == null) {\n        Navigator.pushReplacement(\n            context,\n            MaterialPageRoute(\n              builder: (context) => OnBoard(),\n            ));\n      } else {\n        SimpleUserPreferences.setToken(value);\n\n        Navigator.pushReplacement(\n          context,\n          MaterialPageRoute(\n            builder: (context) => DashboardScreen(),\n          ),\n        );\n      }\n    });\n  }\n}\n"
+        }
+    ]
+}

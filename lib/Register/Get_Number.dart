@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, deprecated_member_use, sized_box_for_whitespace
 
+import 'package:flutter/cupertino.dart';
 import 'package:lango/Constance/constance.dart';
 import 'package:lango/Constance/theme.dart';
 import 'package:lango/Register/OTP.dart';
+import 'package:lango/Register/viewmodel/get_number_view_model.dart';
 import 'package:lango/Widget/textField_otp.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +19,8 @@ class _GetnumberState extends State<GetnumberScreen> {
   int pageNumber = 0;
 
   final PageController _pageController = PageController();
+  GetNumberViewModel controller = GetNumberViewModel();
+  TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -136,34 +140,42 @@ class _GetnumberState extends State<GetnumberScreen> {
               ),
             ),
             Center(
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => OtpChecking(),
-                    ),
-                  );
-                },
-                child: Container(
-                  height: 48,
-                  width: 175,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF3757FF),
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "Login now",
-                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                            fontFamily: 'ProductSans',
-                            fontSize: 14,
-                            color: Colors.white,
+              child: controller.inprogressGetNumber
+                  ? CupertinoActivityIndicator()
+                  : InkWell(
+                      onTap: () {
+                        controller.sendPhoneNumer(
+                            context, textEditingController.text);
+                        setState(() {
+                          controller.inprogressGetNumber = true;
+                        });
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (_) => OtpChecking(),
+                        //   ),
+                        // );
+                      },
+                      child: Container(
+                        height: 48,
+                        width: 175,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF3757FF),
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Login now",
+                            style:
+                                Theme.of(context).textTheme.bodyText1!.copyWith(
+                                      fontFamily: 'ProductSans',
+                                      fontSize: 14,
+                                      color: Colors.white,
+                                    ),
                           ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ),
             ),
           ],
         ),

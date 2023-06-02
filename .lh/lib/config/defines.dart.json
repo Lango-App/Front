@@ -1,0 +1,22 @@
+{
+    "sourceFile": "lib/config/defines.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1683669021325,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1683669698218,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,8 @@\n class Defines {\n   static const String baseUrl = 'http://5.253.24.33/api/v1';\n   static const String getPhoneNumber = \"/auth/get_phone_number\";\n-  static const String getFirstName = \"/auth/signup/first_name\";\n-  static const String getLastName = \"/auth/signup/last_name\";\n-  static const String getUserGender = \"/auth/signup/gender\";\n-  static const String getUserName = \"/auth/signup/username\";\n-  static const String getBirthday = \"/auth/signup/birthday\";\n+  static const String getsignup = \"/auth/signup\";\n \n   static const String checkOtp = \"/auth/check_otp\";\n   static const String getStates = \"/city/get_city_state\";\n   static const String getCities = \"/city/get_city_state?state_id=\";\n"
+                }
+            ],
+            "date": 1683669021325,
+            "name": "Commit-0",
+            "content": "class Defines {\n  static const String baseUrl = 'http://5.253.24.33/api/v1';\n  static const String getPhoneNumber = \"/auth/get_phone_number\";\n  static const String getFirstName = \"/auth/signup/first_name\";\n  static const String getLastName = \"/auth/signup/last_name\";\n  static const String getUserGender = \"/auth/signup/gender\";\n  static const String getUserName = \"/auth/signup/username\";\n  static const String getBirthday = \"/auth/signup/birthday\";\n\n  static const String checkOtp = \"/auth/check_otp\";\n  static const String getStates = \"/city/get_city_state\";\n  static const String getCities = \"/city/get_city_state?state_id=\";\n  static const String signup = \"/auth/signup\";\n  static const String home = \"/home\";\n  static const String refresh = \"/auth/refresh\";\n  static const String detail = \"/job/view?id=\";\n  static const String setBookmark = \"/bookmark/bookmarked?id=\";\n  static const String bookmark = \"/bookmark/list\";\n  static const String addVote = \"/job/comment/add\";\n}\n"
+        }
+    ]
+}

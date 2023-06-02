@@ -289,8 +289,10 @@ class _FeedState extends State<Feed> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => NewPostScreen(),
-                  )),
+                    builder: (context) => CreatePostScreen(),
+                  )
+              )
+
             },
             backgroundColor: HexColor("FFC02D"),
             child: Icon(
