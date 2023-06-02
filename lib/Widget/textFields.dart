@@ -3,7 +3,7 @@
 import 'package:lango/Constance/theme.dart';
 import 'package:flutter/material.dart';
 
-class MyTextFieald extends StatefulWidget {
+class MyTextField extends StatefulWidget {
   final String lableText;
   final TextStyle lableStyle;
   final Widget suffixIcon;
@@ -11,7 +11,7 @@ class MyTextFieald extends StatefulWidget {
   final bool hideTextfild;
   final VoidCallback click;
 
-  const MyTextFieald({
+  const MyTextField({
     super.key,
     required this.lableText,
     required this.suffixIcon,
@@ -21,13 +21,14 @@ class MyTextFieald extends StatefulWidget {
       fontFamily: 'ProductSans',
     ),
     required this.click,
+    required TextEditingController controller,
   });
 
   @override
-  State<MyTextFieald> createState() => _MyTextFiealdState();
+  State<MyTextField> createState() => _MyTextFieldState();
 }
 
-class _MyTextFiealdState extends State<MyTextFieald> {
+class _MyTextFieldState extends State<MyTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(

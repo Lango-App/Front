@@ -27,9 +27,6 @@ class TeacherListScreenState extends State<TeacherListScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(
-                  width: 4,
-                ),
                 InkWell(
                   onTap: () {
                     Navigator.pop(context);
@@ -40,9 +37,7 @@ class TeacherListScreenState extends State<TeacherListScreen> {
                     alignment: Alignment.centerLeft,
                   ),
                 ),
-                SizedBox(
-                  width: 90,
-                ),
+                Spacer(),
                 Text(
                   "Teacher",
                   style: Theme.of(context).textTheme.bodyText1!.copyWith(
@@ -50,6 +45,7 @@ class TeacherListScreenState extends State<TeacherListScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                 ),
+                Spacer(),
               ],
             ),
             SizedBox(
@@ -201,10 +197,10 @@ class TeacherListScreenState extends State<TeacherListScreen> {
                       SizedBox(
                         height: 8,
                       ),
-                      Image.asset(
-                        img,
-                        height: 18,
-                      ),
+                      // Image.asset(
+                      //   img,
+                      //   height: 18,
+                      // ),
                     ],
                   ),
                 ],

@@ -27,9 +27,6 @@ class CourseListScreenState extends State<CourseListScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(
-                  width: 4,
-                ),
                 InkWell(
                   onTap: () {
                     Navigator.pop(context);
@@ -40,9 +37,7 @@ class CourseListScreenState extends State<CourseListScreen> {
                     alignment: Alignment.centerLeft,
                   ),
                 ),
-                SizedBox(
-                  width: 90,
-                ),
+                Spacer(),
                 Text(
                   "Course",
                   style: Theme.of(context).textTheme.bodyText1!.copyWith(
@@ -50,6 +45,7 @@ class CourseListScreenState extends State<CourseListScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                 ),
+                Spacer(),
               ],
             ),
             SizedBox(
@@ -221,10 +217,10 @@ class CourseListScreenState extends State<CourseListScreen> {
                     ],
                   ),
                   Spacer(), 
-                    Image.asset(
-                      img,
-                      height: 25,
-                    ),
+                  // Image.asset(
+                  //   img,
+                  //   height: 25,
+                  // ),
                 ],
               ),
               SizedBox(

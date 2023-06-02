@@ -77,7 +77,7 @@ class _OnBoardScreenState extends State<OnBoard> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => RegisterScreen(),
+                  builder: (_) => GetnumberScreen(),
                 ),
               );
             },

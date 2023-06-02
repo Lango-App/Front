@@ -1,6 +1,4 @@
 import 'package:lango/Constance/constance.dart';
-import 'package:lango/School/School.dart';
-import 'package:lango/Widget/buttons.dart';
 import 'package:lango/School/Question_List.dart';
 import 'package:flutter/material.dart';
 import '../Constance/theme.dart';
@@ -28,17 +26,17 @@ class PracticeScreenState extends State<PracticeScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(
-                  width: 15,
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Image.asset(
+                    AppTheme.isLightTheme ? ConstanceData.backArrow : ConstanceData.backArrow,
+                    height: 40,
+                    alignment: Alignment.centerLeft,
+                  ),
                 ),
-                Image.asset(
-                  AppTheme.isLightTheme ? ConstanceData.listIcon : ConstanceData.listIcon,
-                  height: 14,
-                  alignment: Alignment.centerLeft,
-                ),
-                SizedBox(
-                  width: 100,
-                ),
+                Spacer(),
                 Text(
                   "Practice",
                   style: Theme.of(context).textTheme.bodyText1!.copyWith(
@@ -46,6 +44,7 @@ class PracticeScreenState extends State<PracticeScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                 ),
+                Spacer(),
               ],
             ),
             SizedBox(
@@ -214,10 +213,10 @@ class PracticeScreenState extends State<PracticeScreen> {
                     ],
                   ),
                   Spacer(), 
-                  Image.asset(
-                    img,
-                    height: 22,
-                  ),
+                  // Image.asset(
+                  //   img,
+                  //   height: 22,
+                  // ),
                 ],
               ),
               SizedBox(

@@ -240,67 +240,6 @@ class PracticeSummaryScreenState extends State<PracticeSummaryScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: AppTheme.isLightTheme
-                                ? HexColor("#EBF1FF")
-                                : Theme.of(context).cardColor,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(30),
-                                topRight: Radius.circular(5),
-                                bottomLeft: Radius.circular(30),
-                                bottomRight: Radius.circular(5)),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Back",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText1!
-                                  .copyWith(
-                                    fontSize: 12,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 3,
-                      ),
-                      Expanded(
-                        child: Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColor,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(5),
-                                topRight: Radius.circular(30),
-                                bottomLeft: Radius.circular(5),
-                                bottomRight: Radius.circular(30)),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Re task",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText1!
-                                  .copyWith(
-                                    fontSize: 12,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
                   SizedBox(
                     height: 20,
                   )
