@@ -1,23 +1,18 @@
-// ignore_for_file: prefer_const_constructors_in_immutables, deprecated_member_use, prefer_const_constructors, sort_child_properties_last
-
 import 'package:get/get.dart';
 import 'package:lango/Constance/constance.dart';
 import 'package:lango/Constance/theme.dart';
 import 'package:lango/Register/Choose_Language.dart';
-import 'package:lango/Widget/textFiealds.dart';
+import 'package:lango/Widget/textField_otp.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:lango/Widget/textFiealds.dart';
 
-class RController extends GetxController with StateMixin {
+class RController extends GetxController {
   @override
   void onInit() {
     // TODO: implement onInit
     super.onInit();
   }
 }
-
-RxString Gender = "Gender".obs;
 
 class RegisterScreen extends StatefulWidget {
   RegisterScreen({Key? key}) : super(key: key);
@@ -27,6 +22,9 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  RxString Gender = "Gender".obs;
+  TextEditingController _gender = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,8 +38,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
           //crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            //Row(
-            //children: [
             Image.asset(
               ConstanceData.p1,
               height: 21,
@@ -121,13 +117,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                           ),
                         ),
-                        // TextFormField(
-                        //   style: TextStyle(
-                        //       fontFamily: 'ProductSans',
-                        //       fontSize: 10,
-                        //       fontWeight: FontWeight.bold,
-                        //       color: Color(0xFF141416)),
-                        // ),
                         Divider(),
                         Container(
                           height: 69,
@@ -163,37 +152,41 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         Divider(),
                         Container(
                           height: 69,
-                          child: Obx(
-                            () => Padding(
+                          child:  Padding(
                               padding: const EdgeInsets.all(15),
-                              child: MyTextFieald(
-                                suffixIcon: IconButton(
-                                  icon: AppTheme.isLightTheme
-                                      ? Image.asset(
-                                          ConstanceData.p9,
-                                          height: 21,
-                                        )
-                                      : Image.asset(
-                                          ConstanceData.dp9,
-                                          height: 21,
-                                        ),
-                                  onPressed: () {},
+                              child: Obx(
+                                () => MyTextField(
+                                  controller: _gender,
+                                  suffixIcon: IconButton(
+                                    icon: AppTheme.isLightTheme
+                                        ? Image.asset(
+                                            ConstanceData.p9,
+                                            height: 21,
+                                          )
+                                        : Image.asset(
+                                            ConstanceData.dp9,
+                                            height: 21,
+                                          ),
+                                    onPressed: () {},
+                                  ),
+                                  click: () {
+                                    showModalBottomSheet<void>(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return ListWidget(
+                                          Gender: Gender,
+                                          controller: _gender,
+                                        );
+                                      },
+                                    );
+                                  },
+                                  lableText: 'Gender',
+                                  lableStyle: TextStyle(
+                                    fontFamily: 'ProductSans',
+                                    fontSize: 14,
+                                    color: Color(0xFF777E90),
+                                  ),
                                 ),
-                                click: () {
-                                  showModalBottomSheet<void>(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return ListWidget();
-                                    },
-                                  );
-                                },
-                                lableText: Gender.value,
-                                lableStyle: TextStyle(
-                                  fontFamily: 'ProductSans',
-                                  fontSize: 14,
-                                  color: Color(0xFF777E90),
-                                ),
-                              ),
                             ),
                           ),
                         ),
@@ -265,83 +258,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                           ),
                         ),
-                        // Divider(),
-                        // Container(
-                        //   height: 69,
-                        //   child: Padding(
-                        //     padding: const EdgeInsets.all(15),
-                        //     child: MyTextFieald(
-                        //       suffixIcon: IconButton(
-                        //         icon: AppTheme.isLightTheme
-                        //             ? Image.asset(
-                        //                 ConstanceData.p9,
-                        //                 height: 21,
-                        //               )
-                        //             : Image.asset(
-                        //                 ConstanceData.dp9,
-                        //                 height: 21,
-                        //               ),
-                        //         onPressed: () {},
-                        //       ),
-                        //       click: () {
-                        //         showModalBottomSheet<void>(
-                        //           context: context,
-                        //           builder: (BuildContext context) {
-                        //             return ListView(
-                        //               padding:
-                        //                   EdgeInsets.only(top: 130, bottom: 0),
-                        //               children: [
-                        //                 Container(
-                        //                   child: Column(
-                        //                     mainAxisAlignment:
-                        //                         MainAxisAlignment.center,
-                        //                     children: [
-                        //                       Container(
-                        //                         child: TableCalendar(
-                        //                           firstDay: DateTime.utc(
-                        //                               2010, 10, 16),
-                        //                           lastDay:
-                        //                               DateTime.utc(2030, 3, 14),
-                        //                           focusedDay: DateTime.now(),
-                        //                         ),
-                        //                       ),
-                        //                     ],
-                        //                   ),
-                        //                   decoration: BoxDecoration(
-                        //                     color: AppTheme.isLightTheme
-                        //                         ? Color(0xFFF4F5F6)
-                        //                         : Colors.black,
-                        //                     border: Border.all(
-                        //                         color: HexColor("#EBEBF0")),
-                        //                     borderRadius: BorderRadius.only(
-                        //                       topLeft:
-                        //                           const Radius.circular(8.0),
-                        //                       topRight:
-                        //                           const Radius.circular(8.0),
-                        //                     ),
-                        //                   ),
-                        //                 ),
-                        //               ],
-                        //             );
-                        //           },
-                        //         );
-                        //       },
-                        //       lableText: 'Birthday',
-                        //       lableStyle: TextStyle(
-                        //         fontFamily: 'ProductSans',
-                        //         fontSize: 14,
-                        //         color: Color(0xFF777E90),
-                        //       ),
-                        //     ),
-                        //     // Text(
-                        //     //   'Birthday',
-                        //     //   style: TextStyle(
-                        //     //       fontFamily: 'ProductSans',
-                        //     //       fontSize: 14,
-                        //     //       color: Color(0xFF777E90)),
-                        //     // ).data!,
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
@@ -351,37 +267,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
             SizedBox(
               height: 20,
             ),
-            // InkWell(
-            //   onTap: () {
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //         builder: (_) => (),
-            //       ),
-            //     );
-            //   },
-            //   child: Center(
-            //     child: Container(
-            //       height: 50,
-            //       width: 180,
-            //       decoration: BoxDecoration(
-            //         color: Color(0xFF3757FF),
-            //         borderRadius: BorderRadius.all(Radius.circular(30)),
-            //       ),
-            //       child: Center(
-            //         child: Text(
-            //           "Continue",
-            //           style: Theme.of(context).textTheme.bodyText1!.copyWith(
-            //                 fontFamily: 'ProductSans',
-            //                 fontSize: 15,
-            //                 //fontWeight: FontWeight.bold,
-            //                 color: Colors.white,
-            //               ),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
             SizedBox(
               height: 10,
             ),
@@ -423,7 +308,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
 }
 
 class ListWidget extends StatefulWidget {
-  const ListWidget({Key? key}) : super(key: key);
+  final RxString Gender;
+  final TextEditingController controller;
+
+  const ListWidget({
+    required this.Gender,
+    required this.controller,
+  });
 
   @override
   State<ListWidget> createState() => _ListWidgetState();
@@ -432,136 +323,136 @@ class ListWidget extends StatefulWidget {
 class _ListWidgetState extends State<ListWidget> {
   @override
   Widget build(BuildContext context) {
-    return Obx(() => ListView(
-          padding: EdgeInsets.only(top: 130, bottom: 0),
-          children: [
-            Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    'Gender',
-                    style: TextStyle(
-                      fontFamily: 'ProductSans',
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF141416),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(15),
-                          topRight: Radius.circular(15),
-                          bottomLeft: Radius.circular(8),
-                          bottomRight: Radius.circular(8),
-                        ),
-                        color: Colors.white),
-                    margin: EdgeInsets.only(
-                      left: 20,
-                      right: 20,
-                    ),
-                    height: 60,
-                    child: RadioListTile(
-                        activeColor: Color(0xFF3757FF),
-                        title: Text('Female'),
-                        value: 'Female',
-                        groupValue: Gender.value,
-                        onChanged: (value) {
-                          setState(() {
-                            Gender.value = value.toString();
-
-                            Navigator.of(context).pop();
-
-                            //print(Gender);
-                          });
-                        },
-                        controlAffinity: ListTileControlAffinity.trailing),
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
-                        color: Colors.white),
-                    margin: EdgeInsets.only(
-                      left: 20,
-                      right: 20,
-                    ),
-                    height: 60,
-                    child: RadioListTile(
-                        activeColor: Color(0xFF3757FF),
-                        title: Text("Male"),
-                        value: "Male",
-                        groupValue: Gender.value,
-                        onChanged: (value) {
-                          setState(() {
-                            Gender.value = value.toString();
-                            Navigator.of(context).pop();
-
-                            //print(Gender);
-                          });
-                        },
-                        controlAffinity: ListTileControlAffinity.trailing),
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(8),
-                          topRight: Radius.circular(8),
-                          bottomLeft: Radius.circular(15),
-                          bottomRight: Radius.circular(15),
-                        ),
-                        color: Colors.white),
-                    margin: EdgeInsets.only(
-                      left: 20,
-                      right: 20,
-                    ),
-                    height: 60,
-                    child: RadioListTile(
-                        activeColor: Color(0xFF3757FF),
-                        title: Text("Other"),
-                        value: "Other",
-                        groupValue: Gender.value,
-                        onChanged: (value) {
-                          setState(() {
-                            Gender.value = value.toString();
-                            Navigator.of(context).pop();
-
-                            //print(Gender);
-                          });
-                        },
-                        controlAffinity: ListTileControlAffinity.trailing),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                ],
+    return Obx (
+      () => ListView(
+      padding: EdgeInsets.only(top: 130, bottom: 0),
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            color: AppTheme.isLightTheme ? Color(0xFFF4F5F6) : Colors.black,
+            border: Border.all(color: HexColor("#EBEBF0")),
+            borderRadius: BorderRadius.only(
+              topLeft: const Radius.circular(8.0),
+              topRight: const Radius.circular(8.0),
+            ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 20,
               ),
-              decoration: BoxDecoration(
-                color: AppTheme.isLightTheme ? Color(0xFFF4F5F6) : Colors.black,
-                border: Border.all(color: HexColor("#EBEBF0")),
-                borderRadius: BorderRadius.only(
-                  topLeft: const Radius.circular(8.0),
-                  topRight: const Radius.circular(8.0),
+              Text(
+                'Gender',
+                style: TextStyle(
+                  fontFamily: 'ProductSans',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF141416),
                 ),
               ),
-            ),
-          ],
-        ));
-    ;
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15),
+                      topRight: Radius.circular(15),
+                      bottomLeft: Radius.circular(8),
+                      bottomRight: Radius.circular(8),
+                    ),
+                    color: Colors.white),
+                margin: EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                ),
+                height: 60,
+                child: RadioListTile(
+                  activeColor: Color(0xFF3757FF),
+                  title: Text('Female'),
+                  value: 'Female',
+                  groupValue: widget.Gender.value!,
+                  onChanged: (value) {
+                    setState(() {
+                      widget.Gender.value = value.toString();
+                      widget.controller.text = value.toString();
+                      Navigator.of(context).pop();
+                    });
+                  },
+                  controlAffinity: ListTileControlAffinity.trailing,
+                ),
+              ),
+              SizedBox(
+                height: 4,
+              ),
+              Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                    color: Colors.white),
+                margin: EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                ),
+                height: 60,
+                child: RadioListTile(
+                  activeColor: Color(0xFF3757FF),
+                  title: Text("Male"),
+                  value: "Male",
+                  groupValue: widget.Gender.value!,
+                  onChanged: (value) {
+                    setState(() {
+                      widget.Gender.value = value.toString();
+                      widget.controller.text = value.toString();
+                      Navigator.of(context).pop();
+                    });
+                  },
+                  controlAffinity: ListTileControlAffinity.trailing,
+                ),
+              ),
+              SizedBox(
+                height: 4,
+              ),
+              Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(8),
+                      topRight: Radius.circular(8),
+                      bottomLeft: Radius.circular(15),
+                      bottomRight: Radius.circular(15),
+                    ),
+                    color: Colors.white),
+                margin: EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                ),
+                height: 60,
+                child: RadioListTile(
+                  activeColor: Color(0xFF3757FF),
+                  title: Text("Other"),
+                  value: "Other",
+                  groupValue: widget.Gender.value!,
+                  onChanged: (value) {
+                    setState(() {
+                      widget.Gender.value = value.toString();
+                      widget.controller.text = value.toString();
+                      Navigator.of(context).pop();
+                    });
+                  },
+                  controlAffinity: ListTileControlAffinity.trailing,
+                ),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+    );
   }
 }

@@ -3,7 +3,7 @@
 import 'package:lango/Constance/constance.dart';
 import 'package:lango/Constance/theme.dart';
 import 'package:lango/Register/OTP.dart';
-import 'package:lango/Widget/textFieald_otp.dart';
+import 'package:lango/Widget/textField_otp.dart';
 import 'package:flutter/material.dart';
 
 class GetnumberScreen extends StatefulWidget {
@@ -106,7 +106,7 @@ class _GetnumberState extends State<GetnumberScreen> {
                             right: 20,
                             top: 15,
                           ),
-                          child: MyTextFieald(
+                          child: MyTextField(
                             controller: TextEditingController(),
                             suffixIcon: IconButton(
                               icon: AppTheme.isLightTheme

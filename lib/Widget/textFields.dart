@@ -1,5 +1,3 @@
-// ignore_for_file: file_names, override_on_non_overriding_member, prefer_const_constructors, deprecated_member_use
-
 import 'package:lango/Constance/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -10,9 +8,8 @@ class MyTextFieald extends StatefulWidget {
   final TextInputType keyboardtype;
   final bool hideTextfild;
   final VoidCallback click;
-  final TextEditingController controller;
 
-  MyTextFieald({
+  const MyTextFieald({
     super.key,
     required this.lableText,
     required this.suffixIcon,
@@ -21,7 +18,6 @@ class MyTextFieald extends StatefulWidget {
     this.lableStyle = const TextStyle(
       fontFamily: 'ProductSans',
     ),
-    required this.controller,
     required this.click,
   });
 

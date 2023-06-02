@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:lango/Constance/constance.dart';
 import 'package:lango/Constance/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:lango/Feed/Creat_Post.dart';
+import 'package:lango/Feed/Create_Post.dart';
 
 class Feed extends StatefulWidget {
   const Feed({super.key});

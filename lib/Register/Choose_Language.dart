@@ -1,12 +1,18 @@
 import 'package:lango/Constance/constance.dart';
 import 'package:lango/Constance/theme.dart';
 import 'package:lango/Dashboard/Dashboard.dart';
-import 'package:lango/Widget/textFieald_otp.dart';
+import 'package:lango/Widget/textField_otp.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-RxString Nativelanguage = "Native language".obs;
-RxString Learnlanguage = "Learn language".obs;
+
+class RController extends GetxController {
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+  }
+}
 
 class ChooselanguageScreen extends StatefulWidget {
   const ChooselanguageScreen({super.key});
@@ -15,9 +21,12 @@ class ChooselanguageScreen extends StatefulWidget {
   State<ChooselanguageScreen> createState() => ChooseLanguageState();
 }
 
-var Language = TextEditingController();
-
 class ChooseLanguageState extends State<ChooselanguageScreen> {
+  RxString Nativelanguage = "Native language".obs;
+  RxString Learnlanguage = "Learn language".obs;
+  TextEditingController languageNative = TextEditingController();
+  TextEditingController languageLearn = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,8 +77,9 @@ class ChooseLanguageState extends State<ChooselanguageScreen> {
               ),
               child: Padding(
                 padding: const EdgeInsets.all(20),
-                child: MyTextFieald(
-                  lableText: Nativelanguage.value,
+                child: Obx(
+                  () => MyTextField(
+                  lableText: 'Native language',
                   lableStyle: TextStyle(
                     fontFamily: 'ProductSans',
                     fontSize: 14,
@@ -87,16 +97,20 @@ class ChooseLanguageState extends State<ChooselanguageScreen> {
                           ),
                     onPressed: () {},
                   ),
-                  controller: Language,
+                  controller: languageNative,
                   click: () {
                     showModalBottomSheet<void>(
                       context: context,
                       builder: (BuildContext context) {
-                        return ListWidget();
+                        return ListNativelangoWidget(
+                          NativeObx: Nativelanguage,
+                          controller: languageNative,
+                        );
                       },
                     );
                   },
                 ),
+              ),
               ),
             ),
             SizedBox(
@@ -118,8 +132,9 @@ class ChooseLanguageState extends State<ChooselanguageScreen> {
               ),
               child: Padding(
                 padding: const EdgeInsets.all(20),
-                child: MyTextFieald(
-                  lableText: Learnlanguage.value,
+                child: Obx(
+                  () => MyTextField(
+                  lableText: 'Learn language',
                   lableStyle: TextStyle(
                     fontFamily: 'ProductSans',
                     fontSize: 14,
@@ -137,15 +152,19 @@ class ChooseLanguageState extends State<ChooselanguageScreen> {
                           ),
                     onPressed: () {},
                   ),
-                  controller: Language,
+                  controller: languageLearn,
                   click: () {
                     showModalBottomSheet<void>(
                       context: context,
                       builder: (BuildContext context) {
-                        return ListLearnlangoWidget();
+                        return ListLearnlangoWidget(
+                          LearnObx: Learnlanguage,
+                          controller: languageLearn,
+                        );
                       },
                     );
                   },
+                ),
                 ),
               ),
             ),
@@ -211,18 +230,6 @@ class ChooseLanguageState extends State<ChooselanguageScreen> {
             SizedBox(
               width: 20,
             ),
-
-            // RadioListTile(
-            //     activeColor: Color(0xFF3757FF),
-            //     title: Text(tex),
-            //     value: tex,
-            //     groupValue: Language,
-            //     onChanged: (value) {
-            //       setState(() {
-            //         Language.text = value.toString();
-            //       });
-            //     },
-            //     controlAffinity: ListTileControlAffinity.trailing),
             Text(
               tex,
               style: Theme.of(context).textTheme.bodyText1!.copyWith(
@@ -242,20 +249,34 @@ class ChooseLanguageState extends State<ChooselanguageScreen> {
   }
 }
 
-class ListWidget extends StatefulWidget {
-  const ListWidget({Key? key}) : super(key: key);
+class ListNativelangoWidget extends StatefulWidget {
+  final RxString NativeObx;
+  final TextEditingController controller;
+
+  const ListNativelangoWidget({
+    required this.NativeObx,
+    required this.controller,
+  });
 
   @override
-  State<ListWidget> createState() => _ListWidgetState();
+  State<ListNativelangoWidget> createState() => _ListNativelangoWidgetState();
 }
 
-class _ListWidgetState extends State<ListWidget> {
+class _ListNativelangoWidgetState extends State<ListNativelangoWidget> {
   @override
   Widget build(BuildContext context) {
-    return Obx(() => ListView(
+    return ListView(
           padding: EdgeInsets.only(top: 130, bottom: 0),
           children: [
             Container(
+              decoration: BoxDecoration(
+                color: AppTheme.isLightTheme ? Color(0xFFF4F5F6) : Colors.black,
+                border: Border.all(color: HexColor("#EBEBF0")),
+                borderRadius: BorderRadius.only(
+                  topLeft: const Radius.circular(8.0),
+                  topRight: const Radius.circular(8.0),
+                ),
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -293,13 +314,12 @@ class _ListWidgetState extends State<ListWidget> {
                         activeColor: Color(0xFF3757FF),
                         title: Text('Persian'),
                         value: 'Persian',
-                        groupValue: Nativelanguage.value,
+                        groupValue: widget.NativeObx.value!,
                         onChanged: (value) {
                           setState(() {
-                            Nativelanguage.value = value.toString();
-
+                            widget.NativeObx.value = value.toString();
+                            widget.controller.text = value.toString();
                             Navigator.of(context).pop();
-
                             //print(Nativelanguage);
                           });
                         },
@@ -322,12 +342,12 @@ class _ListWidgetState extends State<ListWidget> {
                         activeColor: Color(0xFF3757FF),
                         title: Text("English"),
                         value: "English",
-                        groupValue: Nativelanguage.value,
+                        groupValue: widget.NativeObx.value!,
                         onChanged: (value) {
                           setState(() {
-                            Nativelanguage.value = value.toString();
+                            widget.NativeObx.value = value.toString();
+                            widget.controller.text = value.toString();
                             Navigator.of(context).pop();
-
                             //print(Nativelanguage);
                           });
                         },
@@ -355,12 +375,12 @@ class _ListWidgetState extends State<ListWidget> {
                         activeColor: Color(0xFF3757FF),
                         title: Text("French"),
                         value: "French",
-                        groupValue: Nativelanguage.value,
+                        groupValue: widget.NativeObx.value!,
                         onChanged: (value) {
                           setState(() {
-                            Nativelanguage.value = value.toString();
+                            widget.NativeObx.value = value.toString();
+                            widget.controller.text = value.toString();
                             Navigator.of(context).pop();
-
                             //print(Nativelanguage);
                           });
                         },
@@ -371,23 +391,20 @@ class _ListWidgetState extends State<ListWidget> {
                   ),
                 ],
               ),
-              decoration: BoxDecoration(
-                color: AppTheme.isLightTheme ? Color(0xFFF4F5F6) : Colors.black,
-                border: Border.all(color: HexColor("#EBEBF0")),
-                borderRadius: BorderRadius.only(
-                  topLeft: const Radius.circular(8.0),
-                  topRight: const Radius.circular(8.0),
-                ),
-              ),
             ),
           ],
-        ));
-    ;
+        );
   }
 }
 
 class ListLearnlangoWidget extends StatefulWidget {
-  const ListLearnlangoWidget({Key? key}) : super(key: key);
+  final RxString LearnObx;
+  final TextEditingController controller;
+
+  const ListLearnlangoWidget({
+    required this.LearnObx,
+    required this.controller,
+  });
 
   @override
   State<ListLearnlangoWidget> createState() => _ListLearnlangoWidgetState();
@@ -396,10 +413,19 @@ class ListLearnlangoWidget extends StatefulWidget {
 class _ListLearnlangoWidgetState extends State<ListLearnlangoWidget> {
   @override
   Widget build(BuildContext context) {
-    return Obx(() => ListView(
+    return Obx(
+      () => ListView(
           padding: EdgeInsets.only(top: 250, bottom: 0),
           children: [
             Container(
+              decoration: BoxDecoration(
+                color: AppTheme.isLightTheme ? Color(0xFFF4F5F6) : Colors.black,
+                border: Border.all(color: HexColor("#EBEBF0")),
+                borderRadius: BorderRadius.only(
+                  topLeft: const Radius.circular(8.0),
+                  topRight: const Radius.circular(8.0),
+                ),
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -437,13 +463,12 @@ class _ListLearnlangoWidgetState extends State<ListLearnlangoWidget> {
                         activeColor: Color(0xFF3757FF),
                         title: Text('English'),
                         value: 'English',
-                        groupValue: Learnlanguage.value,
+                        groupValue: widget.LearnObx.value!,
                         onChanged: (value) {
                           setState(() {
-                            Learnlanguage.value = value.toString();
-
+                            widget.LearnObx.value = value.toString();
+                            widget.controller.text = value.toString();
                             Navigator.of(context).pop();
-
                             //print(Nativelanguage);
                           });
                         },
@@ -454,17 +479,9 @@ class _ListLearnlangoWidgetState extends State<ListLearnlangoWidget> {
                   ),
                 ],
               ),
-              decoration: BoxDecoration(
-                color: AppTheme.isLightTheme ? Color(0xFFF4F5F6) : Colors.black,
-                border: Border.all(color: HexColor("#EBEBF0")),
-                borderRadius: BorderRadius.only(
-                  topLeft: const Radius.circular(8.0),
-                  topRight: const Radius.circular(8.0),
-                ),
-              ),
             ),
           ],
-        ));
-    ;
+        ),
+    );
   }
 }

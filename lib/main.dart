@@ -23,7 +23,7 @@ import 'package:lango/Register/Settings.dart';
 import 'package:lango/Register/Choose_Language.dart';
 import 'package:lango/Constance/Constance.dart';
 import 'package:lango/Feed/Feed.dart';
-import 'package:lango/Feed/Creat_Post.dart';
+import 'package:lango/Feed/Create_Post.dart';
 import 'package:lango/Chats/Chat_Dashboard.dart';
 import 'package:lango/Chats/Chats/Chats.dart';
 
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: AppTheme.getTheme(),
       debugShowCheckedModeBanner: false,
-      home: CourseListScreen(),
+      home: RegisterScreen(),
     );
   }
 }
