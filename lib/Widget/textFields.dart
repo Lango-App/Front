@@ -3,7 +3,7 @@
 import 'package:lango/Constance/theme.dart';
 import 'package:flutter/material.dart';
 
-class MyTextField extends StatefulWidget {
+class MyTextFieald extends StatefulWidget {
   final String lableText;
   final TextStyle lableStyle;
   final Widget suffixIcon;
